@@ -1,48 +1,42 @@
 "use client";
 import { Animation, Pin, Root, Waypoint } from "@bsmnt/scrollytelling";
+import { v4 as uuidv4 } from "uuid";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "./page.module.css";
 
-const totalFrames = 8;
+const totalFrames = 9;
 
 const frames = (frame: number): number => frame * (100 / totalFrames);
 
-function SpinningPineapple({
-  startFrame,
-  endFrame,
-  image,
-  startShowing = false,
-}: {
-  startFrame: number;
-  endFrame: number;
-  image: number;
-  startShowing: boolean;
-}) {
-  const [show, setShow] = useState(startShowing);
+const pineappleFrames = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const spinSrc = (frame: number) => `/spin-${frame}.png`;
+
+function SpinningPineapple({ startFrame }: { startFrame: number }) {
+  const [src, setSrc] = useState(spinSrc(pineappleFrames[0]));
 
   return (
     <>
-      <Waypoint
-        at={frames(startFrame)}
-        onCall={() => {
-          setShow(true);
-        }}
-        disabled={false}
-      />
-      {show && (
-        <Image
-          src={`/spin-${image}.png`}
-          alt="Spinning pineapple"
-          width={300}
-          height={240}
-          priority
+      {pineappleFrames.map((f) => (
+        <Waypoint
+          key={`pineapple-frame-${f}`}
+          at={frames(f)}
+          onCall={() => {
+            setSrc(spinSrc(f));
+          }}
+          onReverseCall={() => {
+            setSrc(spinSrc(f));
+          }}
+          disabled={false}
         />
-      )}
-      <Waypoint
-        at={frames(endFrame)}
-        onCall={() => setShow(false)}
-        disabled={false}
+      ))}
+      <Image
+        src={src}
+        alt="Spinning pineapple"
+        width={300}
+        height={240}
+        priority
       />
     </>
   );
@@ -53,33 +47,14 @@ export default function Home() {
     <main className="">
       <Root>
         <div>
-          <Pin childHeight={"100vh"} pinSpacerHeight={"300vh"} top={0}>
+          <Pin childHeight={"0vh"} pinSpacerHeight={"2200vh"} top={0}>
             <div className={styles.frame1}>
-              <SpinningPineapple
-                startFrame={0}
-                endFrame={1}
-                image={1}
-                startShowing
-              />
-              <SpinningPineapple startFrame={1} endFrame={2} image={2} />
-              <SpinningPineapple startFrame={2} endFrame={3} image={3} />
-              <SpinningPineapple startFrame={3} endFrame={4} image={4} />
-              <SpinningPineapple startFrame={4} endFrame={5} image={5} />
-              <SpinningPineapple startFrame={5} endFrame={6} image={6} />
-              <SpinningPineapple startFrame={6} endFrame={7} image={7} />
-              <SpinningPineapple startFrame={7} endFrame={8} image={8} />
+              <SpinningPineapple startFrame={0} />
             </div>
           </Pin>
-          <Pin childHeight={10} pinSpacerHeight={"100vh"} top={0}>
+          <Pin childHeight={"100vh"} pinSpacerHeight={"100vh"} top={0}>
             <div className={styles.frame2}>
-              <SpinningPineapple startFrame={0} endFrame={1} image={1} />
-              <SpinningPineapple startFrame={1} endFrame={2} image={2} />
-              <SpinningPineapple startFrame={2} endFrame={3} image={3} />
-              <SpinningPineapple startFrame={3} endFrame={4} image={4} />
-              <SpinningPineapple startFrame={4} endFrame={5} image={5} />
-              <SpinningPineapple startFrame={5} endFrame={6} image={6} />
-              <SpinningPineapple startFrame={6} endFrame={7} image={7} />
-              <SpinningPineapple startFrame={7} endFrame={8} image={8} />
+              <SpinningPineapple startFrame={9} />
             </div>
           </Pin>
         </div>
