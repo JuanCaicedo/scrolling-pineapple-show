@@ -1,0 +1,16 @@
+.image {
+  object-fit: contain;
+  position: absolute;
+}
+
+.treeFar {
+  top: 0;
+}
+
+.treeMid {
+  top: 50px;
+}
+
+.treeClose {
+  top: 100px;
+}
