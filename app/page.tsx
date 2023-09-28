@@ -5,7 +5,7 @@ import { useState } from "react";
 import styles from "./page.module.css";
 import Head from "next/head";
 
-const totalFrames = 18;
+const totalFrames = 9;
 const totalHeight = 3600;
 
 const frames = (frame: number): number => frame * (100 / totalFrames);
@@ -20,7 +20,7 @@ function SpinningPineapple({ startFrame }: { startFrame: number }) {
   return (
     <>
       {pineappleFrames.map((f) => {
-        const at = frames(f + startFrame);
+        const at = frames(f - 1);
         return (
           <Waypoint
             key={`pineapple-frame-${f}`}
@@ -61,28 +61,28 @@ function PreloadImages() {
 export default function Home() {
   return (
     <main className="">
-      <PreloadImages/>
+      <PreloadImages />
       <Root>
-        <div>
-          <Pin
-            childHeight={"100vh"}
-            pinSpacerHeight={`${totalHeight / 2}vh`}
-            top={0}
-          >
-            <div className={styles.frame1}>
-              <SpinningPineapple startFrame={0} />
-            </div>
-          </Pin>
-          <Pin
-            childHeight={"100vh"}
-            pinSpacerHeight={`${totalHeight / 2}vh`}
-            top={0}
-          >
-            <div className={styles.frame2}>
-              <SpinningPineapple startFrame={9} />
-            </div>
-          </Pin>
-        </div>
+        <Pin
+          childHeight={"100vh"}
+          pinSpacerHeight={`${totalHeight / 2}vh`}
+          top={0}
+        >
+          <div className={styles.frame1}>
+            <SpinningPineapple startFrame={0} />
+          </div>
+        </Pin>
+      </Root>
+      <Root>
+        <Pin
+          childHeight={"100vh"}
+          pinSpacerHeight={`${totalHeight / 2}vh`}
+          top={0}
+        >
+          <div className={styles.frame2}>
+            <SpinningPineapple />
+          </div>
+        </Pin>
       </Root>
     </main>
   );
