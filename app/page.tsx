@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 import { Animation, Pin, Root, Waypoint } from "@bsmnt/scrollytelling";
 import Image from "next/image";

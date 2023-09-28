@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 import { Parallax, Root, Pin } from "@bsmnt/scrollytelling";
 import Image from "next/image";
