@@ -52,8 +52,11 @@ function PreloadImages() {
   return (
     <Head>
       {pineappleFrames.map((f) => (
-        <link rel="preload" href={spinSrc(f)} as="image" />
-      ))}
+        <link rel="preload" href={spinSrc(f)} as="image" key={
+          `preload-${f}`
+        } />
+      ))
+      }
     </Head>
   );
 }
