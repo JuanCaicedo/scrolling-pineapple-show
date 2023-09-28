@@ -65,7 +65,7 @@ export default function Home() {
       <Root>
         <div>
           <Pin
-            childHeight={"0vh"}
+            childHeight={"100vh"}
             pinSpacerHeight={`${totalHeight / 2}vh`}
             top={0}
           >
