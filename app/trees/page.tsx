@@ -1,6 +1,6 @@
 // @ts-nocheck
 "use client";
-import { Parallax, Root, Pin } from "@bsmnt/scrollytelling";
+import { Animation, Parallax, Root, Pin } from "@bsmnt/scrollytelling";
 import Image from "next/image";
 import styles from "./page.module.css";
 import Head from "next/head";
@@ -19,6 +19,21 @@ export default function Trees() {
       <PreloadImages />
       <Root start="top bottom">
         <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`} top={100}>
+          <Animation
+            tween={{
+              start: 0,
+              end: 100,
+              from: { right: '100vh' },
+              to: { right: 0, rotation: 800, ease: "linear" },
+            }}
+          >
+            <Image alt="Pineapple"
+              src={"/spin-1.png"}
+              width={100}
+              height={100}
+              className={`${styles.image} ${styles.pineapple}`}
+            />
+          </Animation>
           <Parallax
             tween={{
               start: 0,

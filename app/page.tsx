@@ -1,6 +1,6 @@
 // @ts-nocheck
 "use client";
-import { Animation, Pin, Root, Waypoint } from "@bsmnt/scrollytelling";
+import { Pin, Root, Waypoint } from "@bsmnt/scrollytelling";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "./page.module.css";
@@ -53,11 +53,8 @@ function PreloadImages() {
   return (
     <Head>
       {pineappleFrames.map((f) => (
-        <link rel="preload" href={spinSrc(f)} as="image" key={
-          `preload-${f}`
-        } />
-      ))
-      }
+        <link rel="preload" href={spinSrc(f)} as="image" key={`preload-${f}`} />
+      ))}
     </Head>
   );
 }
