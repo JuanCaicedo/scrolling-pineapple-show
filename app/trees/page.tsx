@@ -18,16 +18,17 @@ export default function Trees() {
     <main className="">
       <PreloadImages />
       <Root start="top bottom">
-        <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`} top={100}>
+        <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
           <Animation
             tween={{
               start: 0,
               end: 100,
-              from: { right: '100vh' },
-              to: { right: 0, rotation: 800, ease: "linear" },
+              from: { top: "100vh", right: "100vh" },
+              to: { top: 0, right: 0, rotation: 800, ease: "linear" },
             }}
           >
-            <Image alt="Pineapple"
+            <Image
+              alt="Pineapple"
               src={"/spin-1.png"}
               width={100}
               height={100}
