@@ -141,6 +141,7 @@ export default function App() {
     camRef.current.lookAt(p2);
   }, []);
 
+  const pineapple = useRef<HTMLImageElement>(null);
   return (
     <Root start="top top" end="bottom bottom" scrub={2}>
       <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
@@ -163,6 +164,17 @@ export default function App() {
                 },
               }}
             />
+            <Animation
+              tween={{
+                start: 0,
+                end: 100,
+                target: pineapple,
+                from: {
+                  top: "120%",
+                  left: "0%",
+                },
+              }}
+            />
 
             <PerspectiveCamera
               position={[0, 0, 20]}
@@ -177,6 +189,13 @@ export default function App() {
 
             <Tube />
           </Canvas>
+          <div className={styles["image-container"]}>
+            <img
+              ref={pineapple}
+              src="/no-sunglasses.png"
+              className={`image ${styles.pineapple}`}
+            />
+          </div>
         </div>
       </Pin>
     </Root>
