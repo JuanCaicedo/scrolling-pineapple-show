@@ -131,38 +131,41 @@ const frames = (frame: number): number => frame * (100 / totalFrames);
 const spinSrc = (frame: number) => `/spin-${frame}.png`;
 const pineappleFrames = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-const SpinningPineapple= React.forwardRef(({ startFrame }: { startFrame: number }, ref) => {
-  const [src, setSrc] = React.useState(spinSrc(pineappleFrames[0]));
+const SpinningPineapple = React.forwardRef(
+  ({ startFrame }: { startFrame: number }, ref) => {
+    const [src, setSrc] = React.useState(spinSrc(pineappleFrames[0]));
 
-  return (
-    <>
-      {pineappleFrames.map((f) => {
-        const at = frames(f - 1);
-        return (
-          <Waypoint
-            key={`pineapple-frame-${f}`}
-            at={at}
-            onCall={() => {
-              setSrc(spinSrc(f));
-            }}
-            onReverseCall={() => {
-              setSrc(spinSrc(f));
-            }}
-            disabled={false}
+    return (
+      <>
+        {pineappleFrames.map((f) => {
+          const at = frames(f - 1);
+          return (
+            <Waypoint
+              key={`pineapple-frame-${f}`}
+              at={at}
+              onCall={() => {
+                setSrc(spinSrc(f));
+              }}
+              onReverseCall={() => {
+                setSrc(spinSrc(f));
+              }}
+              disabled={false}
+            />
+          );
+        })}
+        <div className={styles.container}>
+          <img
+            ref={ref}
+            src={src}
+            alt="Spinning pineapple"
+            className={`image ${styles.pineapple}`}
           />
-        );
-      })}
-      <div className={styles.container}>
-        <img
-          ref={ref}
-          src={src}
-          alt="Spinning pineapple"
-          className={`image ${styles.pineapple}`}
-        />
-      </div>
-    </>
-  );
-})
+        </div>
+      </>
+    );
+  }
+);
+SpinningPineapple.displayName = "SpinningPineapple";
 
 export default function App() {
   const camRef = React.useRef();
@@ -230,7 +233,7 @@ export default function App() {
             <Tube />
           </Canvas>
           <div className={styles["image-container"]}>
-            <SpinningPineapple ref={pineapple}/>
+            <SpinningPineapple ref={pineapple} />
           </div>
         </div>
       </Pin>
