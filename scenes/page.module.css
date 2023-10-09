@@ -1,0 +1,12 @@
+.frame1 {
+    min-height: 100vh;
+    width: 100vw;
+    background-color: gray;
+  }
+
+.spotlight {
+  min-height: 50vh;
+  width: 50vw;
+  background-color: yellow;
+  transform: rotate(45deg);
+}
