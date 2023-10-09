@@ -6,7 +6,7 @@ import * as React from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
 
-import { Pin, Root, Animation } from "@bsmnt/scrollytelling";
+import { Pin, Root, Animation, Waypoint } from "@bsmnt/scrollytelling";
 import { useRef } from "react";
 
 const getPointsPath = () => {
@@ -124,6 +124,46 @@ const Tube = () => {
   );
 };
 
+const totalFrames = 9;
+const totalHeight = 3600;
+
+const frames = (frame: number): number => frame * (100 / totalFrames);
+const spinSrc = (frame: number) => `/spin-${frame}.png`;
+const pineappleFrames = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const SpinningPineapple= React.forwardRef(({ startFrame }: { startFrame: number }, ref) => {
+  const [src, setSrc] = React.useState(spinSrc(pineappleFrames[0]));
+
+  return (
+    <>
+      {pineappleFrames.map((f) => {
+        const at = frames(f - 1);
+        return (
+          <Waypoint
+            key={`pineapple-frame-${f}`}
+            at={at}
+            onCall={() => {
+              setSrc(spinSrc(f));
+            }}
+            onReverseCall={() => {
+              setSrc(spinSrc(f));
+            }}
+            disabled={false}
+          />
+        );
+      })}
+      <div className={styles.container}>
+        <img
+          ref={ref}
+          src={src}
+          alt="Spinning pineapple"
+          className={`image ${styles.pineapple}`}
+        />
+      </div>
+    </>
+  );
+})
+
 export default function App() {
   const camRef = React.useRef();
 
@@ -190,11 +230,7 @@ export default function App() {
             <Tube />
           </Canvas>
           <div className={styles["image-container"]}>
-            <img
-              ref={pineapple}
-              src="/no-sunglasses.png"
-              className={`image ${styles.pineapple}`}
-            />
+            <SpinningPineapple ref={pineapple}/>
           </div>
         </div>
       </Pin>
