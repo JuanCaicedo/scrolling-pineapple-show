@@ -35,3 +35,8 @@ body {
   object-fit: contain;
   position: absolute;
 }
+
+.image-fixed {
+  object-fit: contain;
+  position: fixed;
+}
