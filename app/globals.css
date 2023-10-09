@@ -30,3 +30,8 @@ body {
   margin: 0;
   background-color: #111111;
 }
+
+.image {
+  object-fit: contain;
+  position: absolute;
+}
