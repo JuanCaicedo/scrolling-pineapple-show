@@ -30,3 +30,6 @@
 .party-background {
   background-color: #4d3423;
 }
+.color-highlight {
+  z-index: 1;
+}

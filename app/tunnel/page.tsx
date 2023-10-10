@@ -1,7 +1,7 @@
 // @ts-nocheck
 "use client";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { PerspectiveCamera, useTexture, Image } from "@react-three/drei";
+import { PerspectiveCamera, useTexture } from "@react-three/drei";
 import * as React from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
@@ -125,7 +125,6 @@ const Tube = () => {
 };
 
 const totalFrames = 9;
-const totalHeight = 3600;
 
 const frames = (frame: number): number => frame * (100 / totalFrames);
 const spinSrc = (frame: number) => `/spin-${frame}.png`;
