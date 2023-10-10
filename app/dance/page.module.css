@@ -24,3 +24,9 @@
   top: 33%;
   left: 0;
 }
+.start-hidden {
+  opacity: 0;
+}
+.party-background {
+  background-color: #4d3423;
+}
