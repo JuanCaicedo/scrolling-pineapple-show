@@ -28,10 +28,6 @@ export default function PineappleRun() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
     controllerRef.current?.preload(firstFrame, lastFrame);
-    if (canvasRef.current) {
-      canvasRef.current.width = window.innerWidth;
-      canvasRef.current.height = window.innerWidth;
-    }
   }, [controllerRef, canvasRef, firstFrame, lastFrame]);
 
   const spinTimeline = getStaggeredTimeline({
@@ -66,8 +62,9 @@ export default function PineappleRun() {
             const src = runSrc(frame);
             return src;
           }}
-          width={100}
-          height={100}
+          className={styles.canvas}
+          width={2000}
+          height={2000}
         />
       </Pin>
     </Root>
