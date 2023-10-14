@@ -1,8 +1,8 @@
 // @ts-nocheck
 "use client";
-import { Pin, Root, Waypoint } from "@bsmnt/scrollytelling";
+import { Pin, Root, Waypoint, ImageSequenceCanvas } from "@bsmnt/scrollytelling";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from "./page.module.css";
 import Head from "next/head";
 
@@ -17,6 +17,18 @@ const spinSrc = (frame: number) => `/spin-${frame}.png`;
 
 function SpinningPineapple({ startFrame }: { startFrame: number }) {
   const [src, setSrc] = useState(spinSrc(pineappleFrames[0]));
+  const controllerRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const firstFrame = pineappleFrames[0];
+  const lastFrame = pineappleFrames[pineappleFrames.length - 1];
+
+  useEffect(() => {
+    controllerRef.current?.preload(firstFrame, lastFrame);
+    if (canvasRef.current) {
+      canvasRef.current.width = window.innerWidth;
+      canvasRef.current.height = window.innerWidth; 
+    }
+  }, [controllerRef, canvasRef, firstFrame, lastFrame]);
 
   return (
     <>
@@ -27,22 +39,21 @@ function SpinningPineapple({ startFrame }: { startFrame: number }) {
             key={`pineapple-frame-${f}`}
             at={at}
             onCall={() => {
-              setSrc(spinSrc(f));
+              controllerRef.current?.draw(f);
             }}
             onReverseCall={() => {
-              setSrc(spinSrc(f));
+              controllerRef.current?.draw(f);
             }}
             disabled={false}
           />
         );
       })}
       <div className={styles.container}>
-        <Image
-          src={src}
-          alt="Spinning pineapple"
-          fill={true}
+        <ImageSequenceCanvas
           className={styles.image}
-          priority
+          controllerRef={controllerRef}
+          ref={canvasRef}
+          getFrameSrc={(frame) => spinSrc(frame)}
         />
       </div>
     </>
