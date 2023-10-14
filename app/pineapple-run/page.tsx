@@ -23,6 +23,21 @@ const runSrc = (frame: number) => `/pineapple-run-${frame}.png`;
 const firstFrame = runningFrames[0];
 const lastFrame = runningFrames[runningFrames.length - 1];
 
+function findClosestFrame(timeline: { start: number }[], time: number) {
+  // find the item in in the timeline that has the closest start time to the time
+  // and then return its index
+  let closest = 0;
+  let closestDiff = 10;
+  for (let i = 0; i < timeline.length; i++) {
+    const diff = Math.abs(timeline[i].start - time);
+    if (diff < closestDiff) {
+      closestDiff = diff;
+      closest = i;
+    }
+  }
+  return closest;
+}
+
 export default function PineappleRun() {
   const controllerRef = useRef<ImageSequenceCanvasController>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -30,31 +45,31 @@ export default function PineappleRun() {
     controllerRef.current?.preload(firstFrame, lastFrame);
   }, [controllerRef, canvasRef, firstFrame, lastFrame]);
 
-  const spinTimeline = getStaggeredTimeline({
+  const runTimeline = getStaggeredTimeline({
     start: 0,
     end: 100,
     chunks: runningFrames.length,
     overlap: 0,
   });
+  const firstTimeline = runTimeline[0];
+  const lastTimeline = runTimeline[runTimeline.length - 1];
 
   return (
     <Root start="top top" end="bottom bottom" scrub={2}>
       <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
-        {spinTimeline.map(({ start }, idx) => {
-          return (
-            <Waypoint
-              key={`pineapple-frame-${start}`}
-              at={start}
-              onCall={() => {
-                controllerRef.current?.draw(idx + 1);
-              }}
-              onReverseCall={() => {
-                controllerRef.current?.draw(idx + 1);
-              }}
-              disabled={false}
-            />
-          );
-        })}
+        <Animation
+          tween={{
+            target: canvasRef,
+            start: firstTimeline.start,
+            end: lastTimeline.end,
+            to: {
+              onUpdate: function () {
+                const closest = findClosestFrame(runTimeline, this.time());
+                controllerRef.current?.draw(closest + 1);
+              },
+            },
+          }}
+        />
         <ImageSequenceCanvas
           controllerRef={controllerRef}
           ref={canvasRef}

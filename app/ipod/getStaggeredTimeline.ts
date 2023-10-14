@@ -67,7 +67,7 @@ export const getStaggeredTimeline = (config: {
 
     return {
       start: chunkStart,
-      end: chunkEnd,
+      end: chunkEnd > 100 ? 100 : chunkEnd,
     };
   });
 
