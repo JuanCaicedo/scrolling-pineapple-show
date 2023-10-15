@@ -5,38 +5,19 @@ import {
   Root,
   Animation,
   ImageSequenceCanvas,
-  Waypoint,
 } from "@bsmnt/scrollytelling";
 import styles from "./page.module.css";
 import { useEffect, useRef } from "react";
-import { getStaggeredTimeline } from "../ipod/getStaggeredTimeline";
+import { getStaggeredTimeline } from "../utils/getStaggeredTimeline";
+import { ImageSequenceCanvasController, findClosestFrame } from "../utils/ImageSequence";
 
 const runningFrames = [1, 2, 3, 4, 5, 6];
-type ImageSequenceCanvasController = {
-  preload: (frameStart: number, frameEnd: number) => Promise<void>;
-  draw: (frame: number) => Promise<void>;
-  canvas: HTMLCanvasElement | null;
-};
 
 const runSrc = (frame: number) => `/pineapple-run-${frame}.png`;
 
 const firstFrame = runningFrames[0];
 const lastFrame = runningFrames[runningFrames.length - 1];
 
-function findClosestFrame(timeline: { start: number }[], time: number) {
-  // find the item in in the timeline that has the closest start time to the time
-  // and then return its index
-  let closest = 0;
-  let closestDiff = 10;
-  for (let i = 0; i < timeline.length; i++) {
-    const diff = Math.abs(timeline[i].start - time);
-    if (diff < closestDiff) {
-      closestDiff = diff;
-      closest = i;
-    }
-  }
-  return closest;
-}
 
 export default function PineappleRun() {
   const controllerRef = useRef<ImageSequenceCanvasController>(null);

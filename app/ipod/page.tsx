@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import styles from "./page.module.css";
 import Head from "next/head";
-import { getStaggeredTimeline } from "./getStaggeredTimeline";
+import { getStaggeredTimeline } from "../utils/getStaggeredTimeline";
 
 const totalFrames = 17;
 const totalHeight = 3600;
