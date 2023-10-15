@@ -40,3 +40,10 @@ body {
   object-fit: contain;
   position: fixed;
 }
+
+.panel {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
