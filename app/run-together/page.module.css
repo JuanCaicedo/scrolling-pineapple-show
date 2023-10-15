@@ -1,4 +1,20 @@
+.run-container {
+  left: 120%;
+  position: absolute;
+  width: 100%;
+}
+
+.together-container {
+  position: relative;
+}
+
 .pineapple {
-    left: 100%;
-    position: absolute;
+  position: absolute;
+  left: -35%;
+}
+
+.racoon {
+  position: absolute;
+  left: 35%;
+  top: 20%
 }

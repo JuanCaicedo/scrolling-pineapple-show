@@ -1,11 +1,12 @@
 import styles from "./index.module.css";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Animation, ImageSequenceCanvas } from "@bsmnt/scrollytelling";
 import {
   ImageSequenceCanvasController,
   findClosestFrame,
 } from "@/app/utils/ImageSequence";
 import { getStaggeredTimeline } from "@/app/utils/getStaggeredTimeline";
+import { mergeRefs } from "react-merge-refs";
 
 const runningFrames = [1, 2, 3, 4, 5, 6, 7];
 
@@ -14,9 +15,11 @@ const runSrc = (frame: number) => `/racoon-run-${frame}.png`;
 const firstFrame = runningFrames[0];
 const lastFrame = runningFrames[runningFrames.length - 1];
 
-export default function RacoonRun() {
+const RacoonRun = React.forwardRef(({className=''}: {className?: string}, ref) => {
   const controllerRef = useRef<ImageSequenceCanvasController>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const mainRef = mergeRefs([ref, canvasRef]);
+
   useEffect(() => {
     controllerRef.current?.preload(firstFrame, lastFrame);
     controllerRef.current?.draw(1);
@@ -53,10 +56,12 @@ export default function RacoonRun() {
           const src = runSrc(frame);
           return src;
         }}
-        className={styles.canvas}
+        className={`${styles.canvas} ${className}`}
         width={2000}
         height={2000}
       />
     </>
   );
-}
+})
+
+export default RacoonRun;
