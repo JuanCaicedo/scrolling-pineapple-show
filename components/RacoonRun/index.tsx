@@ -15,7 +15,10 @@ const runSrc = (frame: number) => `/racoon-run-${frame}.png`;
 const firstFrame = runningFrames[0];
 const lastFrame = runningFrames[runningFrames.length - 1];
 
-const RacoonRun = React.forwardRef(({className=''}: {className?: string}, ref) => {
+const RacoonRun = React.forwardRef(function RacoonRun(
+  { className = "" }: { className?: string },
+  ref
+) {
   const controllerRef = useRef<ImageSequenceCanvasController>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mainRef = mergeRefs([ref, canvasRef]);
@@ -23,7 +26,7 @@ const RacoonRun = React.forwardRef(({className=''}: {className?: string}, ref) =
   useEffect(() => {
     controllerRef.current?.preload(firstFrame, lastFrame);
     controllerRef.current?.draw(1);
-  }, [controllerRef, canvasRef, firstFrame, lastFrame]);
+  }, [controllerRef, canvasRef]);
 
   const runTimeline = getStaggeredTimeline({
     start: 0,
@@ -62,6 +65,6 @@ const RacoonRun = React.forwardRef(({className=''}: {className?: string}, ref) =
       />
     </>
   );
-})
+});
 
 export default RacoonRun;
