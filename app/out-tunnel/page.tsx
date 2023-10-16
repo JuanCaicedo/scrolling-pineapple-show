@@ -16,7 +16,7 @@ export default function PineappleRunPage() {
               start: 0,
               end: 100,
               target: togetherRef,
-              from: { left: "-130%" },
+              from: { left: "0%", transform: "scale(0.2)", top: "0%" },
             }}
           />
           <div className={styles["run-container"]} ref={togetherRef}>

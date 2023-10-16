@@ -1,0 +1,23 @@
+.run-container {
+  left: 100%;
+  top: 50%;
+  position: absolute;
+  width: 100%;
+  transform: scale(1);
+  transform-origin: left top;
+}
+
+.together-container {
+  position: relative;
+}
+
+.pineapple {
+  position: absolute;
+  left: -35%;
+}
+
+.racoon {
+  position: absolute;
+  left: 35%;
+  top: 20%;
+}
