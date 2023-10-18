@@ -18,6 +18,14 @@
 
 .racoon {
   position: absolute;
-  left: 35%;
-  top: 20%;
+  left: 20%;
+  top: 30vh;
+  transform: scale(1.75);
+  transform-origin: left top;
+}
+
+.tunnel-exit {
+  top: 5%;
+  height: auto;
+  width: 30vw;
 }
