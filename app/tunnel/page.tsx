@@ -54,7 +54,14 @@ var p1, p2;
 const tubePath = getPointsPath();
 const progress = { value: 0 };
 
-const turnSrc = (frame: number) => `/racoon-turn-${frame}.png`;
+const turnSrc = (frame: number) => {
+  if (frame < 10) {
+    return `/racoon-turn-${frame}.png`;
+  }
+
+  const remainder = frame - 10;
+  return `/racoon-run-behind-${remainder}.png`;
+};
 
 const Tube = () => {
   const materialRef = React.useRef();
@@ -217,7 +224,12 @@ export default function App() {
     chunks: 3,
     overlap: 0,
   });
-  console.log("turnTimeline", turnTimeline);
+  const runTimeline = getStaggeredTimeline({
+    start: 0,
+    end: 100,
+    chunks: 30,
+    overlap: 0,
+  });
 
   return (
     <Root start="top top" end="bottom bottom" scrub={2}>
@@ -238,7 +250,11 @@ export default function App() {
                 top: "30%",
                 left: "0%",
                 onUpdate: function () {
-                  controllerRef.current?.draw(3);
+                  const point = this.progress() * 100;
+                  const closest = findClosestFrame(runTimeline, point);
+                  const frame = (closest % 3) + 1;
+                  const offset = frame + 10;
+                  controllerRef.current?.draw(offset);
                 },
               },
             }}
