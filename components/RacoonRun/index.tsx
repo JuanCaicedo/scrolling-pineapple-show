@@ -21,6 +21,8 @@ const RacoonRun = React.forwardRef(function RacoonRun(
 ) {
   const controllerRef = useRef<ImageSequenceCanvasController>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  //TODO use main ref
   const mainRef = mergeRefs([ref, canvasRef]);
 
   useEffect(() => {

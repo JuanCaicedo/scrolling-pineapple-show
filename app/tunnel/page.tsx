@@ -1,4 +1,3 @@
-// @ts-nocheck
 "use client";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { PerspectiveCamera, useTexture } from "@react-three/drei";
@@ -6,8 +5,19 @@ import * as React from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
 
-import { Pin, Root, Animation, Waypoint } from "@bsmnt/scrollytelling";
+import {
+  Pin,
+  Root,
+  Animation,
+  Waypoint,
+  ImageSequenceCanvas,
+} from "@bsmnt/scrollytelling";
 import { useRef } from "react";
+import {
+  ImageSequenceCanvasController,
+  findClosestFrame,
+} from "../utils/ImageSequence";
+import { getStaggeredTimeline } from "../utils/getStaggeredTimeline";
 
 const getPointsPath = () => {
   //Array of points
@@ -28,9 +38,11 @@ const getPointsPath = () => {
     var x = points[i][0];
     var y = points[i][2];
     var z = points[i][1];
+    // @ts-ignore
     points[i] = new THREE.Vector3(x, y, z);
   }
   //Create a path from the points
+  // @ts-ignore
   var path = new THREE.CatmullRomCurve3(points);
   //path.curveType = 'catmullrom';
   path.tension = 0.5;
@@ -42,12 +54,15 @@ var p1, p2;
 const tubePath = getPointsPath();
 const progress = { value: 0 };
 
+const turnSrc = (frame: number) => `/racoon-turn-${frame}.png`;
+
 const Tube = () => {
   const materialRef = React.useRef();
   const texture = useTexture("/texture.png");
 
   useFrame(() => {
     if (materialRef.current) {
+      // @ts-ignore
       materialRef.current.uniforms.uTime.value += 0.01;
     }
   });
@@ -118,6 +133,7 @@ const Tube = () => {
             gl_FragColor = color;
           }
         `}
+        // @ts-ignore
         ref={materialRef}
       />
     </mesh>
@@ -154,6 +170,7 @@ const SpinningPineapple = React.forwardRef(
         })}
         <div className={styles.container}>
           <img
+            // @ts-ignore
             ref={ref}
             src={src}
             alt="Spinning pineapple"
@@ -169,6 +186,7 @@ SpinningPineapple.displayName = "SpinningPineapple";
 export default function App() {
   const camRef = React.useRef();
 
+  // @ts-ignore
   const update = React.useCallback((p) => {
     if (!camRef.current) return;
 
@@ -179,11 +197,28 @@ export default function App() {
     p1 = tubePath.getPointAt(progress);
     p2 = tubePath.getPointAt(progress + lookAtOffset);
 
+    // @ts-ignore
     camRef.current.position.copy(p1);
+    // @ts-ignore
     camRef.current.lookAt(p2);
   }, []);
 
-  const pineapple = useRef<HTMLImageElement>(null);
+  const racoonRef = useRef<HTMLCanvasElement>(null);
+  const controllerRef = useRef<ImageSequenceCanvasController>(null);
+
+  React.useEffect(() => {
+    controllerRef.current?.preload(1, 3);
+    controllerRef.current?.draw(1);
+  }, [controllerRef, racoonRef]);
+
+  const turnTimeline = getStaggeredTimeline({
+    start: 0,
+    end: 30,
+    chunks: 3,
+    overlap: 0,
+  });
+  console.log("turnTimeline", turnTimeline);
+
   return (
     <Root start="top top" end="bottom bottom" scrub={2}>
       <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
@@ -194,46 +229,47 @@ export default function App() {
         `}</style>
 
         <div className={`${styles.container} test-juan`}>
-          <Canvas>
-            <Animation
-              tween={{
-                start: 0,
-                end: 100,
-                target: progress,
-                to: {
-                  value: 1,
-                  onUpdate: (s) => update(progress.value),
+          <Animation
+            tween={{
+              start: 30,
+              end: 100,
+              target: racoonRef,
+              to: {
+                top: "30%",
+                left: "0%",
+                onUpdate: function () {
+                  controllerRef.current?.draw(3);
                 },
-              }}
-            />
-            <Animation
-              tween={{
-                start: 0,
-                end: 100,
-                target: pineapple,
-                from: {
-                  top: "120%",
-                  left: "0%",
+              },
+            }}
+          />
+          <Animation
+            tween={{
+              start: 0,
+              end: 30,
+              target: racoonRef,
+              to: {
+                left: "0%",
+                top: "40%",
+                onUpdate: function () {
+                  const closest = findClosestFrame(turnTimeline, this.time());
+                  controllerRef.current?.draw(closest + 1);
                 },
-              }}
-            />
+              },
+            }}
+          />
 
-            <PerspectiveCamera
-              position={[0, 0, 20]}
-              makeDefault
-              ref={(ref) => {
-                if (!ref) return;
-
-                camRef.current = ref;
-                update(0);
-              }}
-            />
-
-            <Tube />
-          </Canvas>
-          <div className={styles["image-container"]}>
-            <SpinningPineapple ref={pineapple} />
-          </div>
+          <ImageSequenceCanvas
+            className={`${styles["canvas"]} ${styles["racoon"]} image`}
+            controllerRef={controllerRef}
+            ref={racoonRef}
+            getFrameSrc={(frame) => {
+              const src = turnSrc(frame);
+              return src;
+            }}
+            width={2000}
+            height={2000}
+          />
         </div>
       </Pin>
     </Root>
