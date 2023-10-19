@@ -241,14 +241,43 @@ export default function App() {
         `}</style>
 
         <div className={`${styles.container} test-juan`}>
+          <Canvas>
+            <Animation
+              tween={{
+                start: 0,
+                end: 100,
+                target: progress,
+                to: {
+                  value: 1,
+                  onUpdate: (s) => update(progress.value),
+                },
+              }}
+            />
+
+            <PerspectiveCamera
+              position={[0, 0, 20]}
+              makeDefault
+              ref={(ref) => {
+                if (!ref) return;
+
+                // @ts-ignore
+                camRef.current = ref;
+                update(0);
+              }}
+            />
+
+            <Tube />
+          </Canvas>
+
           <Animation
             tween={{
               start: 30,
               end: 100,
               target: racoonRef,
               to: {
-                top: "30%",
+                top: "40%",
                 left: "0%",
+                transform: "scale(0.75)",
                 onUpdate: function () {
                   const point = this.progress() * 100;
                   const closest = findClosestFrame(runTimeline, point);
@@ -266,7 +295,7 @@ export default function App() {
               target: racoonRef,
               to: {
                 left: "0%",
-                top: "40%",
+                top: "50%",
                 onUpdate: function () {
                   const closest = findClosestFrame(turnTimeline, this.time());
                   controllerRef.current?.draw(closest + 1);
