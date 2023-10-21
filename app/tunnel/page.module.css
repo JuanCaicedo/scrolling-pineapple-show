@@ -9,11 +9,6 @@
   overflow: hidden;
   top: 0;
   left: 0;
-  /* background-image: url("/outside-tunnel.png"); */
-  background-size:contain;
-  background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: center;
 }
 .racoon {
   left: -60%;
@@ -27,4 +22,18 @@
 
 .tunnel-inside {
   z-index: 1;
+}
+
+.tunnel-outside {
+  z-index: -1;
+  transform: scale(1.5);
+}
+
+.background {
+  background-color: #513320;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: -2;
+  top: 0;
 }

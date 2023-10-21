@@ -230,6 +230,7 @@ export default function App() {
     overlap: 0,
   });
   const inTunnelRef = useRef<HTMLImageElement>(null);
+  const outTunnelRef = useRef<HTMLImageElement>(null);
 
   return (
     <Root start="top top" end="bottom bottom" scrub={2}>
@@ -327,6 +328,26 @@ export default function App() {
             width={2000}
             height={2000}
           />
+
+          <Animation
+            tween={{
+              start: 70,
+              end: 100,
+              target: outTunnelRef,
+              from: {
+                transform: "scale(0.25)",
+                ease: "linear",
+              },
+            }}
+          />
+          <Image
+            ref={outTunnelRef}
+            src="/outside-tunnel.png"
+            fill={true}
+            alt="outside tunnel"
+            className={`${styles["tunnel-outside"]}`}
+          />
+          <div className={styles.background} />
         </div>
       </Pin>
     </Root>
