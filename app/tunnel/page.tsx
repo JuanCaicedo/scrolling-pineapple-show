@@ -30,8 +30,6 @@ const getPointsPath = () => {
     [150, 112, 8],
     [157, 73, 0],
     [180, 44, 5],
-    [207, 35, 10],
-    [232, 36, 0],
   ];
 
   //Convert the array of points into vertices
@@ -240,20 +238,25 @@ export default function App() {
           <Animation
             tween={{
               start: turnTimeline[turnTimeline.length - 1].start,
-              end: 100,
+              end: 50,
               target: inTunnelRef,
               to: {
-                transform: 'scale(7)',
-                ease: 'linear'
-              }
-
+                transform: "scale(10)",
+                ease: "linear",
+              },
             }}
           />
-          <Image ref={inTunnelRef} src="/tunnel-inside.png" fill={true} alt="inside tunnel" className={`${styles['tunnel-inside']}`} />
+          <Image
+            ref={inTunnelRef}
+            src="/tunnel-inside.png"
+            fill={true}
+            alt="inside tunnel"
+            className={`${styles["tunnel-inside"]}`}
+          />
           <Canvas>
             <Animation
               tween={{
-                start: 0,
+                start: turnTimeline[turnTimeline.length - 1].start,
                 end: 100,
                 target: progress,
                 to: {
@@ -286,7 +289,7 @@ export default function App() {
               to: {
                 top: "40%",
                 left: "0%",
-                transform: "scale(0.75)",
+                transform: "scale(0.50)",
                 onUpdate: function () {
                   const point = this.progress() * 100;
                   const closest = findClosestFrame(runTimeline, point);
