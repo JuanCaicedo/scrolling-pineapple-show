@@ -4,6 +4,7 @@ import { PerspectiveCamera, useTexture } from "@react-three/drei";
 import * as React from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
+import Image from "next/image";
 
 import {
   Pin,
@@ -230,17 +231,25 @@ export default function App() {
     chunks: 30,
     overlap: 0,
   });
+  const inTunnelRef = useRef<HTMLImageElement>(null);
 
   return (
     <Root start="top top" end="bottom bottom" scrub={2}>
       <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
-        <style jsx global>{`
-          body {
-            background-color: #513320;
-          }
-        `}</style>
-
         <div className={`${styles.container} test-juan`}>
+          <Animation
+            tween={{
+              start: turnTimeline[turnTimeline.length - 1].start,
+              end: 100,
+              target: inTunnelRef,
+              to: {
+                transform: 'scale(7)',
+                ease: 'linear'
+              }
+
+            }}
+          />
+          <Image ref={inTunnelRef} src="/tunnel-inside.png" fill={true} alt="inside tunnel" className={`${styles['tunnel-inside']}`} />
           <Canvas>
             <Animation
               tween={{
