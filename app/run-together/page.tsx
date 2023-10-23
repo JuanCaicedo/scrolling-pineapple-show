@@ -28,6 +28,7 @@ export default function PineappleRunPage() {
           />
           <img
             src="/background-mountains.png"
+            alt="background mountains"
             className={styles.mountains}
             ref={mountainsRef}
           />
@@ -41,6 +42,7 @@ export default function PineappleRunPage() {
           />
           <img
             src="/background-trees.png"
+            alt="background trees"
             className={styles.trees}
             ref={treesRef}
           />
@@ -54,6 +56,7 @@ export default function PineappleRunPage() {
           />
           <img
             src="/background-flowers.png"
+            alt="background flowers"
             className={styles.flowers}
             ref={flowersRef}
           />
