@@ -11,6 +11,8 @@ export default function PineappleRunPage() {
   const togetherRef = useRef<HTMLImageElement>(null);
   const mountainsRef = useRef<HTMLImageElement>(null);
   const treesRef = useRef<HTMLImageElement>(null);
+  const flowersRef = useRef<HTMLImageElement>(null);
+
   return (
     <Root start="top top" end="bottom bottom" scrub={2}>
       <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
@@ -46,8 +48,21 @@ export default function PineappleRunPage() {
             tween={{
               start: 0,
               end: 100,
+              target: flowersRef,
+              to: { left: "-207vw" },
+            }}
+          />
+          <img
+            src="/background-flowers.png"
+            className={styles.flowers}
+            ref={flowersRef}
+          />
+          <Animation
+            tween={{
+              start: 0,
+              end: 100,
               target: togetherRef,
-              from: { left: "-110%" },
+              from: { left: "-110vw" },
             }}
           />
           <div className={styles["run-container"]} ref={togetherRef}>
