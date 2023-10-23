@@ -1,7 +1,8 @@
 .run-container {
-  left: 120%;
+  left: 65%;
   position: absolute;
   width: 100%;
+  top: 50vh;
 }
 
 .together-container {
@@ -10,11 +11,23 @@
 
 .pineapple {
   position: absolute;
-  left: -35%;
+  left: 15vh;
+  top: 18vh;
+  width: 20vh;
 }
 
 .racoon {
   position: absolute;
-  left: 35%;
-  top: 20%
+  left: 35vh;
+  top: 21vh;
+  width: 20vh;
+}
+
+.background {
+  background-color: #aab77f;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: -2;
+  top: 0;
 }

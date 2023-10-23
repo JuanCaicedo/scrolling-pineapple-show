@@ -1,6 +1,6 @@
 "use client";
 
-import Image from 'next/image';
+import Image from "next/image";
 import { Pin, Root, Animation } from "@bsmnt/scrollytelling";
 import PineappleRunThreeQuarter from "@/components/PineappleRunThreeQuarter";
 import RacoonRunThreeQuarter from "@/components/RacoonRunThreeQuarter";
@@ -20,8 +20,11 @@ export default function ExitTunnel() {
       <Root start="top top" end="bottom bottom" scrub={2}>
         <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
           <div className={"panel"}>
-            <img src="/outside-tunnel.png"  alt="outside-tunnel" className={`image ${styles['tunnel-exit']}`}
-            /> 
+            <img
+              src="/outside-tunnel.png"
+              alt="outside-tunnel"
+              className={`image ${styles["tunnel-exit"]}`}
+            />
             <Animation
               tween={{
                 start: 0,

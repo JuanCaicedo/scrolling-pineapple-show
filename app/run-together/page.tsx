@@ -12,12 +12,13 @@ export default function PineappleRunPage() {
     <Root start="top top" end="bottom bottom" scrub={2}>
       <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
         <div className={"panel"}>
+          <div className={styles.background} />
           <Animation
             tween={{
               start: 0,
               end: 100,
               target: togetherRef,
-              from: { left: "-130%" },
+              from: { left: "-110%" },
             }}
           />
           <div className={styles["run-container"]} ref={togetherRef}>
