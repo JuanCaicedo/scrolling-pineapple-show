@@ -31,7 +31,7 @@ const PineappleRun = React.forwardRef(function PineappleRun(
   const runTimeline = getStaggeredTimeline({
     start: 0,
     end: 100,
-    chunks: runningFrames.length,
+    chunks: 40,
     overlap: 0,
   });
   const firstTimeline = runTimeline[0];
@@ -45,8 +45,10 @@ const PineappleRun = React.forwardRef(function PineappleRun(
           end: lastTimeline.end,
           to: {
             onUpdate: function () {
-              const closest = findClosestFrame(runTimeline, this.time());
-              controllerRef.current?.draw(closest + 1);
+              const point = this.progress() * 100;
+              const closest = findClosestFrame(runTimeline, point);
+              const frame = (closest % 7) + 1;
+              controllerRef.current?.draw(frame);
             },
           },
         }}
