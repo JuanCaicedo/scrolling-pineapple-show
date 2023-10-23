@@ -21,8 +21,8 @@ export default function ExitTunnel() {
         <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
           <div className={"panel"}>
             <img
-              src="/outside-tunnel.png"
-              alt="outside-tunnel"
+              src="/outside-cave-background.png"
+              alt="outside-cave-background"
               className={`image ${styles["tunnel-exit"]}`}
             />
             <Animation
@@ -30,7 +30,15 @@ export default function ExitTunnel() {
                 start: 0,
                 end: 100,
                 target: togetherRef,
-                from: { left: "10%", transform: "scale(0.2)", top: "10%" },
+                fromTo: [
+                  { left: "-35%", transform: "scale(0.05)", top: "55%" },
+                  {
+                    left: "170%",
+                    transform: "scale(2)",
+                    top: "-9%",
+                    ease: "linear",
+                  },
+                ],
               }}
             />
             <div className={styles["run-container"]} ref={togetherRef}>
