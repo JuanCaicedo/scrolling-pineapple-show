@@ -1,6 +1,7 @@
 "use client";
 
 import { Pin, Root, Animation } from "@bsmnt/scrollytelling";
+import Image from "next/image";
 import PineappleRun from "@/components/PineappleRun";
 import { useRef } from "react";
 import styles from "./page.module.css";
@@ -8,11 +9,25 @@ import RacoonRun from "@/components/RacoonRun";
 
 export default function PineappleRunPage() {
   const togetherRef = useRef<HTMLImageElement>(null);
+  const mountainsRef = useRef<HTMLImageElement>(null);
   return (
     <Root start="top top" end="bottom bottom" scrub={2}>
       <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
         <div className={"panel"}>
           <div className={styles.background} />
+          <Animation
+            tween={{
+              start: 0,
+              end: 100,
+              target: mountainsRef,
+              to: { left: "-20vh" },
+            }}
+          />
+          <img
+            src="/background-mountains.png"
+            className={styles.mountains}
+            ref={mountainsRef}
+          />
           <Animation
             tween={{
               start: 0,
