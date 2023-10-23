@@ -32,6 +32,13 @@
   top: 0;
 }
 
+.trees {
+  height: 60vh;
+  top: 18vh;
+  width: auto;
+  position: absolute;
+  left: 0vw;
+}
 
 .mountains {
   height: 40vh;

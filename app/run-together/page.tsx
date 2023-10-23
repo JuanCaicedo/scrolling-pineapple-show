@@ -10,6 +10,7 @@ import RacoonRun from "@/components/RacoonRun";
 export default function PineappleRunPage() {
   const togetherRef = useRef<HTMLImageElement>(null);
   const mountainsRef = useRef<HTMLImageElement>(null);
+  const treesRef = useRef<HTMLImageElement>(null);
   return (
     <Root start="top top" end="bottom bottom" scrub={2}>
       <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
@@ -20,13 +21,26 @@ export default function PineappleRunPage() {
               start: 0,
               end: 100,
               target: mountainsRef,
-              to: { left: "-20vh" },
+              to: { left: "-36vw" },
             }}
           />
           <img
             src="/background-mountains.png"
             className={styles.mountains}
             ref={mountainsRef}
+          />
+          <Animation
+            tween={{
+              start: 0,
+              end: 100,
+              target: treesRef,
+              to: { left: "-103vw" },
+            }}
+          />
+          <img
+            src="/background-trees.png"
+            className={styles.trees}
+            ref={treesRef}
           />
           <Animation
             tween={{
