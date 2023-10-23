@@ -8,7 +8,7 @@ import {
 import { getStaggeredTimeline } from "@/app/utils/getStaggeredTimeline";
 import { mergeRefs } from "react-merge-refs";
 
-const runningFrames = [1, 2, 3, 4, 5, 6];
+const runningFrames = [1, 2, 3, 4, 5, 6, 7];
 
 const runSrc = (frame: number) => `/pineapple-run-${frame}.png`;
 
