@@ -36,7 +36,7 @@ export default function ExitTunnel() {
                     left: "170%",
                     transform: "scale(2)",
                     top: "-9%",
-                    ease: "linear",
+                    ease: "ease-in",
                   },
                 ],
               }}
