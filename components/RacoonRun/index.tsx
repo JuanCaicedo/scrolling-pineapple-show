@@ -51,7 +51,6 @@ const RacoonRun = React.forwardRef(function RacoonRun(
               const point = this.progress() * 100;
               const closest = findClosestFrame(runTimeline, point);
               const frame = (closest % 7) + 1;
-              console.log("frame", frame);
               controllerRef.current?.draw(frame);
             },
           },
