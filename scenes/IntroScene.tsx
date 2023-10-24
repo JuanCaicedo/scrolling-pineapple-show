@@ -35,7 +35,18 @@ export default function IntroScene() {
             tween={{
               start: 40,
               end: 100,
-              from: { top: "45vh", ease: "linear" },
+              fromTo: [
+                { transform: "rotate(45deg)" },
+                {
+                  keyframes: {
+                    "25%": { transform: "rotate(120deg)" },
+                    "40%": { transform: "rotate(160deg)" },
+                    "50%": { transform: "rotate(200deg)" },
+                    "75%": { transform: "rotate(280deg)" },
+                    "100%": { transform: "rotate(360deg)" },
+                  },
+                },
+              ],
             }}
           >
             <img

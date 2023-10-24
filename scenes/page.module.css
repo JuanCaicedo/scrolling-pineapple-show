@@ -30,6 +30,7 @@
   height: auto;
   right: -45vh;
   top: -9vh;
+  transform-origin: 32% 68%;
 }
 
 .panel {
