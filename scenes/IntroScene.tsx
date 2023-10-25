@@ -1,9 +1,11 @@
 import { Pin, Animation, Root } from "@bsmnt/scrollytelling";
 import styles from "./page.module.css";
-
-const totalHeight = 3600;
+import { useRef } from "react";
 
 export default function IntroScene() {
+  const sunglassesRef = useRef<HTMLImageElement>(null);
+  const pineappleRef = useRef<HTMLImageElement>(null);
+
   return (
     <Root>
       <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
@@ -19,42 +21,48 @@ export default function IntroScene() {
           </Animation>
           <Animation
             tween={{
+              target: pineappleRef,
               start: 10,
               end: 40,
               from: { top: "110vh", ease: "linear" },
             }}
-          >
-            <img
-              alt="Pinapple no sunglasses"
-              src={"/no-sunglasses.png"}
-              className={`${styles.image} ${styles.pineappleNoSunglasses}`}
-            />
-          </Animation>
+          />
+          <img
+            ref={pineappleRef}
+            alt="Pinapple no sunglasses"
+            src={"/no-sunglasses.png"}
+            className={`${styles.image} ${styles.pineappleNoSunglasses}`}
+          />
 
           <Animation
             tween={{
+              target: sunglassesRef,
+              start: 10,
+              end: 40,
+              from: { top: "110vh", ease: "linear" },
+            }}
+          />
+          <Animation
+            tween={{
+              target: sunglassesRef,
               start: 40,
               end: 100,
               fromTo: [
-                { transform: "rotate(45deg)" },
+                { transform: "rotate(-90deg)" },
                 {
                   keyframes: {
-                    "25%": { transform: "rotate(120deg)" },
-                    "40%": { transform: "rotate(160deg)" },
-                    "50%": { transform: "rotate(200deg)" },
-                    "75%": { transform: "rotate(280deg)" },
-                    "100%": { transform: "rotate(360deg)" },
+                    "100%": { transform: "rotate(0deg)" },
                   },
                 },
               ],
             }}
-          >
-            <img
-              alt="Sunglasses"
-              src={"/sunglasses.png"}
-              className={`${styles.image} ${styles.sunglasses}`}
-            />
-          </Animation>
+          />
+          <img
+            ref={sunglassesRef}
+            alt="Sunglasses"
+            src={"/sunglasses.png"}
+            className={`${styles.image} ${styles.sunglasses}`}
+          />
         </div>
       </Pin>
     </Root>
