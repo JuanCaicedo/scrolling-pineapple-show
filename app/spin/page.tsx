@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import styles from "./page.module.css";
 import Head from "next/head";
+import { ImageSequenceCanvasController } from "../utils/ImageSequence";
 
 const totalFrames = 9;
 const totalHeight = 3600;
@@ -19,9 +20,8 @@ const pineappleFrames = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const spinSrc = (frame: number) => `/spin-${frame}.png`;
 
-function SpinningPineapple({ startFrame }: { startFrame: number }) {
-  const [src, setSrc] = useState(spinSrc(pineappleFrames[0]));
-  const controllerRef = useRef<HTMLCanvasElement>(null);
+function SpinningPineapple() {
+  const controllerRef = useRef<ImageSequenceCanvasController>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const firstFrame = pineappleFrames[0];
   const lastFrame = pineappleFrames[pineappleFrames.length - 1];
@@ -58,6 +58,8 @@ function SpinningPineapple({ startFrame }: { startFrame: number }) {
           controllerRef={controllerRef}
           ref={canvasRef}
           getFrameSrc={(frame) => spinSrc(frame)}
+          width={2000}
+          height={2000}
         />
       </div>
     </>
@@ -85,7 +87,7 @@ export default function Home() {
           top={0}
         >
           <div className={styles.frame1}>
-            <SpinningPineapple startFrame={0} />
+            <SpinningPineapple />
           </div>
         </Pin>
       </Root>
