@@ -47,3 +47,7 @@ body {
   height: 100vh;
   position: absolute;
 }
+
+.canvas {
+  width: 100%;
+}
