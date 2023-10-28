@@ -12,6 +12,7 @@ import Head from "next/head";
 import IntroScene from "@/scenes/IntroScene";
 import IpodScene from "@/scenes/IpodScene";
 import Spin from "@/scenes/Spin";
+import DanceScene from "@/scenes/DanceScene";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <IntroScene />
       <IpodScene />
       <Spin />
+      <DanceScene />
     </main>
   );
 }
