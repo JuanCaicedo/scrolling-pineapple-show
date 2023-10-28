@@ -8,6 +8,7 @@
 .plug {
   left: 5cqw;
   width: 100%;
+  transform-origin: 53% 0%;
 }
 
 .hand {

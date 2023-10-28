@@ -67,6 +67,22 @@ export default function IpodScene() {
               className={`image canvas ${styles.ipod}`}
             />
           </div>
+
+          <Animation
+            tween={{
+              target: plugRef,
+              start: 80,
+              end: 100,
+              fromTo: [
+                {
+                  transform: "rotate(0)",
+                },
+                {
+                  transform: "rotate(-45deg)",
+                },
+              ],
+            }}
+          />
           <img
             ref={plugRef}
             src={"/plug.png"}
