@@ -15,6 +15,7 @@ import Spin from "@/scenes/Spin";
 import DanceScene from "@/scenes/DanceScene";
 import StealScene from "@/scenes/StealScene";
 import LightsOutScene from "@/scenes/LightsOutScene";
+import AngryScene from "@/scenes/AngryScene";
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
       <DanceScene />
       <StealScene />
       <LightsOutScene />
+      <AngryScene />
     </main>
   );
 }
