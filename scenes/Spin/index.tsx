@@ -1,29 +1,32 @@
 import {
   Pin,
   Root,
-  Waypoint,
   ImageSequenceCanvas,
+  Animation,
 } from "@bsmnt/scrollytelling";
-import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import styles from "./index.module.css";
-import Head from "next/head";
-import { ImageSequenceCanvasController } from "@/app/utils/ImageSequence";
+import { ImageSequenceCanvasController, findClosestFrame } from "@/app/utils/ImageSequence";
 import Panel from "@/components/Panel";
-
-const totalFrames = 9;
-
-const frames = (frame: number): number => frame * (100 / totalFrames);
+import { getStaggeredTimeline } from "@/app/utils/getStaggeredTimeline";
 
 const pineappleFrames = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const spinSrc = (frame: number) => `/spin-${frame}.png`;
 
+const firstFrame = pineappleFrames[0];
+const lastFrame = pineappleFrames[pineappleFrames.length - 1];
+
 export default function Spin() {
   const controllerRef = useRef<ImageSequenceCanvasController>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const firstFrame = pineappleFrames[0];
-  const lastFrame = pineappleFrames[pineappleFrames.length - 1];
+
+  const spinTimeline = getStaggeredTimeline({
+    start: 0,
+    end: 100,
+    chunks: pineappleFrames.length,
+    overlap: 0,
+  });
 
   useEffect(() => {
     controllerRef.current?.preload(firstFrame, lastFrame);
@@ -33,26 +36,27 @@ export default function Spin() {
     }
   }, [controllerRef, canvasRef, firstFrame, lastFrame]);
 
+  const firstTimeline = spinTimeline[0];
+  const lastTimeline = spinTimeline[spinTimeline.length - 1];
+
   return (
     <Root>
       <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`} top={0}>
         <Panel>
-          {pineappleFrames.map((f) => {
-            const at = frames(f - 1);
-            return (
-              <Waypoint
-                key={`pineapple-frame-${f}`}
-                at={at}
-                onCall={() => {
-                  controllerRef.current?.draw(f);
-                }}
-                onReverseCall={() => {
-                  controllerRef.current?.draw(f);
-                }}
-                disabled={false}
-              />
-            );
-          })}
+          <Animation
+            tween={{
+              target: canvasRef,
+              start: firstTimeline.start,
+              end: lastTimeline.end,
+              to: {
+                onUpdate: function () {
+                  const point = this.progress() * 100;
+                  const closest = findClosestFrame(spinTimeline, point);
+                  controllerRef.current?.draw(closest + 1);
+                },
+              },
+            }}
+          />
           <div className={styles.container}>
             <ImageSequenceCanvas
               className={"image canvas"}
