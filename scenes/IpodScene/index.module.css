@@ -1,0 +1,32 @@
+.frame1 {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: blue;
+}
+
+.frame2 {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: red;
+}
+
+.container {
+  position: relative;
+  width: 100cqw;
+  height: 100cqh;
+}
+
+.image {
+  object-fit: contain;
+}
+
+.ipod {
+  z-index:1;
+  left: 5cqw;
+  transform: translateY(-50%);
+}
+
+.plug {
+  left: 5cqw;
+  width:100%;
+}
