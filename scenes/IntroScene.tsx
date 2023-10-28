@@ -1,45 +1,32 @@
 import { Pin, Animation, Root } from "@bsmnt/scrollytelling";
 import styles from "./page.module.css";
+import Panel from "@/components/Panel";
 import { useRef } from "react";
 
 export default function IntroScene() {
   const sunglassesRef = useRef<HTMLImageElement>(null);
   const pineappleRef = useRef<HTMLImageElement>(null);
+  const movementRef = useRef<HTMLDivElement>(null);
 
   return (
     <Root>
       <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
-        <div className={styles.panel}>
+        <Panel>
           <Animation
             tween={{
               start: 0,
               end: 10,
-              from: { top: "-120vh", right: 0, ease: "linear" },
+              fromTo: [{ top: "-120cqh" }, { top: "-30cqh", ease: "linear" }],
             }}
           >
             <div className={`${styles.image} ${styles.spotlight}`} />
           </Animation>
           <Animation
             tween={{
-              target: pineappleRef,
+              target: movementRef,
               start: 10,
               end: 40,
-              from: { top: "110vh", ease: "linear" },
-            }}
-          />
-          <img
-            ref={pineappleRef}
-            alt="Pinapple no sunglasses"
-            src={"/no-sunglasses.png"}
-            className={`${styles.image} ${styles.pineappleNoSunglasses}`}
-          />
-
-          <Animation
-            tween={{
-              target: sunglassesRef,
-              start: 10,
-              end: 40,
-              from: { top: "110vh", ease: "linear" },
+              fromTo: [{ top: "120cqh" }, { top: "35cqh" }],
             }}
           />
           <Animation
@@ -57,13 +44,24 @@ export default function IntroScene() {
               ],
             }}
           />
-          <img
-            ref={sunglassesRef}
-            alt="Sunglasses"
-            src={"/sunglasses.png"}
-            className={`${styles.image} ${styles.sunglasses}`}
-          />
-        </div>
+          <div
+            className={`${styles.image} ${styles["movement-container"]}`}
+            ref={movementRef}
+          >
+            <img
+              ref={pineappleRef}
+              alt="Pinapple no sunglasses"
+              src={"/no-sunglasses.png"}
+              className={`${styles.image} ${styles.pineappleNoSunglasses}`}
+            />
+            <img
+              ref={sunglassesRef}
+              alt="Sunglasses"
+              src={"/sunglasses.png"}
+              className={`${styles.image} ${styles.sunglasses}`}
+            />
+          </div>
+        </Panel>
       </Pin>
     </Root>
   );

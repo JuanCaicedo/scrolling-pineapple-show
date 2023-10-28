@@ -5,12 +5,11 @@
 }
 
 .spotlight {
-  min-height: 100vh;
-  width: 100vw;
+  height: 100cqh;
+  left: -137cqw;
+  width: 200cqw;
   background-color: #ffffe7;
   transform: rotate(30deg);
-  left: -28vh;
-  top: -28vh;
 }
 
 .image {
@@ -19,23 +18,20 @@
 }
 
 .pineappleNoSunglasses {
-  width: 220vw;
+  width: 144cqw;
   height: auto;
-  right: -45vh;
-  top: -9vh;
+  right: -50cqw;
+  top: -20cqh;
 }
 
 .sunglasses {
-  width: 220vw;
+  width: 108cqw;
   height: auto;
-  right: -45vh;
-  top: -9vh;
-  transform-origin: 32% 68%;
+  transform-origin: 23.35% 100%;
+  top: 17cqh;
+  left: -95cqw;
 }
 
-.panel {
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
+.movement-container {
+  right: -4cqw;
 }
