@@ -19,6 +19,7 @@ export default function IpodScene() {
   const ipodRef = useRef<HTMLImageElement>(null);
   const plugRef = useRef<HTMLImageElement>(null);
   const handRef = useRef<HTMLImageElement>(null);
+  const togetherRef = useRef<HTMLDivElement>(null);
 
   return (
     <Root>
@@ -41,7 +42,7 @@ export default function IpodScene() {
           />
           <Animation
             tween={{
-              target: handRef,
+              target: togetherRef,
               start: 80,
               end: 100,
               fromTo: [
@@ -49,21 +50,23 @@ export default function IpodScene() {
                   right: "0cqw",
                 },
                 {
-                  right: "-50cqw",
+                  right: "-80cqw",
                 },
               ],
             }}
           />
-          <img
-            ref={handRef}
-            src="/steal-hand.png"
-            className={`image canvas ${styles.hand}`}
-          />
-          <img
-            ref={ipodRef}
-            src="/ipod-1.png"
-            className={`image canvas ${styles.ipod}`}
-          />
+          <div ref={togetherRef} className={`image ${styles.together}`}>
+            <img
+              ref={handRef}
+              src="/steal-hand.png"
+              className={`image canvas ${styles.hand}`}
+            />
+            <img
+              ref={ipodRef}
+              src="/ipod-1.png"
+              className={`image canvas ${styles.ipod}`}
+            />
+          </div>
           <img
             ref={plugRef}
             src={"/plug.png"}
