@@ -4,10 +4,11 @@ import { Pin, Root, Animation } from "@bsmnt/scrollytelling";
 import Image from "next/image";
 import PineappleRun from "@/components/PineappleRun";
 import { useRef } from "react";
-import styles from "./page.module.css";
+import Panel from "@/components/Panel";
+import styles from "./index.module.css";
 import RacoonRun from "@/components/RacoonRun";
 
-export default function PineappleRunPage() {
+export default function Parallax() {
   const togetherRef = useRef<HTMLImageElement>(null);
   const mountainsRef = useRef<HTMLImageElement>(null);
   const treesRef = useRef<HTMLImageElement>(null);
@@ -16,7 +17,7 @@ export default function PineappleRunPage() {
   return (
     <Root start="top top" end="bottom bottom" scrub={2}>
       <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
-        <div className={"panel"}>
+        <Panel>
           <div className={styles.background} />
           <Animation
             tween={{
@@ -74,7 +75,7 @@ export default function PineappleRunPage() {
               <RacoonRun className={styles.racoon} />
             </div>
           </div>
-        </div>
+        </Panel>
       </Pin>
     </Root>
   );
