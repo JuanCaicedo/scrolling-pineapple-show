@@ -1,0 +1,16 @@
+.ipod {
+  z-index: 1;
+  left: 5cqw;
+  transform: translateY(-50%);
+  top: 58cqh;
+}
+
+.plug {
+  left: 5cqw;
+  width: 100%;
+}
+
+.hand {
+  z-index: 2;
+  top: 25cqh;
+}
