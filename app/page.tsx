@@ -13,6 +13,7 @@ import IntroScene from "@/scenes/IntroScene";
 import IpodScene from "@/scenes/IpodScene";
 import Spin from "@/scenes/Spin";
 import DanceScene from "@/scenes/DanceScene";
+import StealScene from "@/scenes/StealScene";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <IpodScene />
       <Spin />
       <DanceScene />
+      <StealScene />
     </main>
   );
 }
