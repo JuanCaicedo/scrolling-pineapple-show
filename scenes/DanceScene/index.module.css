@@ -1,27 +1,27 @@
 .dancing-pineapple {
-  width: 80%;
-  top: 33%;
-  left: 50%;
+  width: 80cqw;
+  top: 33cqh;
+  left: 50cqw;
   transform: translate(-50%, -50%);
 }
 .dancing-strawberry {
-  width: 30%;
+  width: 30cqw;
   right: 0;
-  top: 27%;
+  top: 27cqh;
 }
 .dancing-orange {
-  width: 55%;
+  width: 55cqw;
   left: 0;
   bottom: 0;
 }
 .dancing-pepper {
-  width: 45%;
+  width: 45cqw;
   bottom: 0;
   right: 0;
 }
 .dancing-avocado {
-  width: 35%;
-  top: 33%;
+  width: 35cqw;
+  top: 33cqh;
   left: 0;
 }
 .start-hidden {
