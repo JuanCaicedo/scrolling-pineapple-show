@@ -23,13 +23,13 @@ export default function IpodScene() {
 
   return (
     <Root>
-      <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`} top={0}>
+      <Pin childHeight={"100vh"} pinSpacerHeight={`1500vh`} top={0}>
         <Panel>
           <Animation
             tween={{
               target: handRef,
               start: 0,
-              end: 50,
+              end: 40,
               fromTo: [
                 {
                   right: "-50cqw",
@@ -43,8 +43,8 @@ export default function IpodScene() {
           <Animation
             tween={{
               target: togetherRef,
-              start: 80,
-              end: 100,
+              start: 60,
+              end: 80,
               fromTo: [
                 {
                   right: "0cqw",
@@ -71,8 +71,8 @@ export default function IpodScene() {
           <Animation
             tween={{
               target: plugRef,
-              start: 80,
-              end: 100,
+              start: 60,
+              end: 80,
               fromTo: [
                 {
                   transform: "rotate(0)",
@@ -81,6 +81,32 @@ export default function IpodScene() {
                   transform: "rotate(-45deg)",
                 },
               ],
+            }}
+          />
+          <Animation
+            tween={{
+              target: plugRef,
+              start: 80,
+              end: 100,
+              to: {
+                keyframes: {
+                  "0%": {
+                    transform: "rotate(-45deg)",
+                  },
+                  "25%": {
+                    transform: "rotate(20deg)",
+                  },
+                  "50%": {
+                    transform: "rotate(10deg)",
+                  },
+                  "75%": {
+                    transform: "rotate(-5deg)",
+                  },
+                  "100%": {
+                    transform: "rotate(0deg)",
+                  },
+                },
+              },
             }}
           />
           <img
