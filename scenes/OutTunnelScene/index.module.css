@@ -1,6 +1,6 @@
 .run-container {
   position: absolute;
-  width: 100%;
+  width: 100cqw;
 }
 
 .together-container {
@@ -9,13 +9,13 @@
 
 .pineapple {
   position: absolute;
-  left: -35%;
+  left: -35cqw;
 }
 
 .racoon {
   position: absolute;
-  left: 20%;
-  top: 30vh;
+  left: 20cqw;
+  top: 30cqh;
   transform: scale(1.75);
   transform-origin: left center;
 }
@@ -23,4 +23,5 @@
 .tunnel-exit {
   width: 100cqw;
   height: 100cqh;
+  position: absolute;
 }

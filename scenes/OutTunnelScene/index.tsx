@@ -17,7 +17,7 @@ export default function OutTunnelScene() {
           <img
             src="/outside-cave-background.png"
             alt="outside-cave-background"
-            className={`image ${styles["tunnel-exit"]}`}
+            className={`${styles["tunnel-exit"]}`}
           />
           <Animation
             tween={{
@@ -25,12 +25,12 @@ export default function OutTunnelScene() {
               end: 100,
               target: togetherRef,
               fromTo: [
-                { left: "-35%", transform: "scale(0.05)", top: "55%" },
+                { left: "-40cqw", transform: "scale(0.05)", top: "55cqh" },
                 {
-                  left: "170%",
+                  left: "200cqw",
                   transform: "scale(2)",
-                  top: "-9%",
-                  ease: "ease-in",
+                  top: "-9%cwh",
+                  ease: "circ.in",
                 },
               ],
             }}
