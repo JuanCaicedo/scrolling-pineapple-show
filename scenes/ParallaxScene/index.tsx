@@ -24,7 +24,7 @@ export default function Parallax() {
               start: 0,
               end: 100,
               target: mountainsRef,
-              to: { left: "-36vw" },
+              fromTo: [{ left: "0cqw" }, { left: "-36cqw", ease: "none" }],
             }}
           />
           <img
@@ -38,7 +38,7 @@ export default function Parallax() {
               start: 0,
               end: 100,
               target: treesRef,
-              to: { left: "-103vw" },
+              fromTo: [{ left: "0cqw" }, { left: "-103cqw", ease: "none" }],
             }}
           />
           <img
@@ -52,7 +52,7 @@ export default function Parallax() {
               start: 0,
               end: 100,
               target: flowersRef,
-              to: { left: "-207vw" },
+              fromTo: [{ left: "0cqw" }, { left: "-207cqw", ease: "none" }],
             }}
           />
           <img
@@ -66,7 +66,7 @@ export default function Parallax() {
               start: 0,
               end: 100,
               target: togetherRef,
-              from: { left: "-110vw" },
+              fromTo: [{ left: "-110cqw" }, { left: "90cqw", ease: "none" }],
             }}
           />
           <div className={styles["run-container"]} ref={togetherRef}>

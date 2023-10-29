@@ -1,8 +1,8 @@
 .run-container {
-  left: 85vw;
+
   position: absolute;
-  width: 100%;
-  top: 50vh;
+  width: 100cqw;
+  top: 40cqh;
 }
 
 .together-container {
@@ -11,46 +11,45 @@
 
 .pineapple {
   position: absolute;
-  left: 5vw;
-  top: 18vh;
-  width: 30vh;
+  left: 5cqw;
+  top: 18cqh;
+  width: 50cqw;
 }
 
 .racoon {
   position: absolute;
-  left: 45vw;
-  top: 21vh;
-  width: 30vh;
+  left: 45cqw;
+  top: 21cqh;
+  width: 50cqw;
 }
 
 .background {
   background-color: #aab77f;
-  width: 100vw;
-  height: 100vh;
+  width: 100cqw;
+  height: 100cqh;
   position: absolute;
   z-index: -2;
   top: 0;
 }
 
 .flowers {
-  height: 30vh;
-  top: 55vh;
+  height: 30cqh;
+  top: 50cqh;
   width: auto;
   position: absolute;
-  left: 0vw;
 }
 
 .trees {
-  height: 60vh;
-  top: 18vh;
+  height: 60cqh;
+  top: 14cqh;
   width: auto;
   position: absolute;
-  left: 0vw;
+
 }
 
 .mountains {
-  height: 40vh;
+  height: 40cqh;
   width: auto;
   position: absolute;
-  left: 0;
+  left: 0cqw;
 }
