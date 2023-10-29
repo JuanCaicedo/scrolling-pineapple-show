@@ -12,9 +12,9 @@
 .panel {
   container-type: inline-size;
   overflow: hidden;
-  max-width: 100vw;
+  max-width: calc(100vw - (var(--padding-size) * 2));
   background-color: #111111;
   aspect-ratio: 0.5;
-  height: calc(100% - (var(--padding-size) * 2));
+  height: calc(100vh - (var(--padding-size) * 2));
   position: absolute;
 }
