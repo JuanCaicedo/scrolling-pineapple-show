@@ -10,14 +10,15 @@
   top: 0;
   left: 0;
 }
+
 .racoon {
-  left: -60%;
-  top: 55%;
+  left: -60cqw;
+  top: 55cqh;
   z-index: 2;
 }
 
 .canvas {
-  width: 100%
+  width: 100cqw;
 }
 
 .tunnel-inside {
@@ -31,8 +32,8 @@
 
 .background {
   background-color: #513320;
-  width: 100vw;
-  height: 100vh;
+  width: 100cqw;
+  height: 100cqh;
   position: absolute;
   z-index: -2;
   top: 0;

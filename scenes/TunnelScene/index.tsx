@@ -193,7 +193,11 @@ export default function TunnelScene() {
 
   return (
     <Root start="top top" end="bottom bottom" scrub={2}>
-      <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
+      <Pin
+        childHeight={"100vh"}
+        pinSpacerHeight={`800vh`}
+        pinSpacerClassName={styles.spacer}
+      >
         <Panel>
           <div className={`${styles.container} test-juan`}>
             <Animation
@@ -244,21 +248,26 @@ export default function TunnelScene() {
 
             <Animation
               tween={{
-                start: 30,
+                start: 0,
                 end: 100,
                 target: racoonRef,
-                to: {
-                  top: "40%",
-                  left: "0%",
-                  transform: "scale(0.50)",
-                  onUpdate: function () {
-                    const point = this.progress() * 100;
-                    const closest = findClosestFrame(runTimeline, point);
-                    const frame = (closest % 3) + 1;
-                    const offset = frame + 10;
-                    controllerRef.current?.draw(offset);
+                fromTo: [
+                  { left: "-60cqw", top: "55cqh" },
+                  {
+                    keyframes: {
+                      "30%": {
+                        left: "0cqw",
+                        top: "50cqh",
+                        transform: "scale(1)",
+                      },
+                      "100%": {
+                        top: "94cqi",
+                        left: "0cqi",
+                        transform: "scale(0.50)",
+                      },
+                    },
                   },
-                },
+                ],
               }}
             />
             <Animation
@@ -267,11 +276,26 @@ export default function TunnelScene() {
                 end: 30,
                 target: racoonRef,
                 to: {
-                  left: "0%",
-                  top: "50%",
                   onUpdate: function () {
                     const closest = findClosestFrame(turnTimeline, this.time());
                     controllerRef.current?.draw(closest + 1);
+                  },
+                },
+              }}
+            />
+            <Animation
+              tween={{
+                start: 30,
+                end: 100,
+                target: racoonRef,
+                to: {
+                  onUpdate: function () {
+                    const point = this.progress() * 100;
+                    const closest = findClosestFrame(runTimeline, point);
+                    const frame = (closest % 3) + 1;
+                    const offset = frame + 10;
+                    console.log("offset", offset);
+                    controllerRef.current?.draw(offset);
                   },
                 },
               }}
