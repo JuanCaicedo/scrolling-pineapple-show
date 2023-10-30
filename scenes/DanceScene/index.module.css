@@ -7,7 +7,7 @@
 .dancing-strawberry {
   width: 30cqw;
   right: 0;
-  top: 27cqh;
+  top: 31cqh;
 }
 .dancing-orange {
   width: 55cqw;
@@ -18,18 +18,20 @@
   width: 45cqw;
   bottom: 0;
   right: 0;
+  z-index: 2;
 }
 .dancing-avocado {
   width: 35cqw;
   top: 33cqh;
   left: 0;
 }
-.start-hidden {
-  opacity: 0;
-}
 .party-background {
   background-color: #4d3423;
 }
 .color-highlight {
   z-index: 1;
+}
+
+.color-highlight.dancing-pepper {
+  z-index: 3;
 }

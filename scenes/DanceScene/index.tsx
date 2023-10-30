@@ -26,7 +26,7 @@ function FadeInAndOut({
         ref={ref}
         src={`/dance-${name}.png`}
         alt={`Dancing ${name}`}
-        className={`${styles[className]} image-fixed ${styles["start-hidden"]} ${styles["color-highlight"]}`}
+        className={`${styles[className]} image-fixed ${styles["color-highlight"]}`}
       />
       <img
         src={`/dark-${name}.png`}
@@ -39,7 +39,7 @@ function FadeInAndOut({
           start: startFrame1,
           end: endFrame1,
           target: ref,
-          to: { opacity: 1, ease: "linear" },
+          fromTo: [{ opacity: 0 }, { opacity: 1, ease: "none" }],
         }}
       />
       <Animation
@@ -47,7 +47,7 @@ function FadeInAndOut({
           start: startFrame2,
           end: endFrame2,
           target: ref,
-          to: { opacity: 0, ease: "linear" },
+          fromTo: [{ opacity: 1 }, { opacity: 0, ease: "none" }],
         }}
       />
     </>
