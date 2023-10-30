@@ -32,7 +32,6 @@ body {
 }
 
 .image {
-  object-fit: contain;
   position: absolute;
 }
 

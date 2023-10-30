@@ -6,7 +6,6 @@ import {
   findClosestFrame,
 } from "@/app/utils/ImageSequence";
 import { getStaggeredTimeline } from "@/app/utils/getStaggeredTimeline";
-import { mergeRefs } from "react-merge-refs";
 
 const runningFrames = [1, 2, 3, 4, 5, 6, 7];
 
@@ -21,9 +20,6 @@ const RacoonRun = React.forwardRef(function RacoonRun(
 ) {
   const controllerRef = useRef<ImageSequenceCanvasController>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  //TODO use main ref
-  const mainRef = mergeRefs([ref, canvasRef]);
 
   useEffect(() => {
     controllerRef.current?.preload(firstFrame, lastFrame);
