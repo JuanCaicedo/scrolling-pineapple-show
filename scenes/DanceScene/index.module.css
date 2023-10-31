@@ -36,3 +36,7 @@
 .color-highlight.dancing-pepper {
   z-index: 3;
 }
+
+.start-hidden {
+  opacity: 0;
+}
