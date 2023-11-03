@@ -115,6 +115,7 @@ export default function DanceScene() {
             const ref = refs[remainder];
             return (
               <Animation
+                key={`animation-${idx}`}
                 tween={{
                   target: ref,
                   start,
