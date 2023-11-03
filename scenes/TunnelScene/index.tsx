@@ -56,11 +56,11 @@ const tubePath = getPointsPath();
 const progress = { value: 0 };
 
 const turnSrc = (frame: number) => {
-  if (frame < 10) {
+  if (frame <= 3) {
     return `/racoon-turn-${frame}.png`;
   }
 
-  const remainder = frame - 10;
+  const remainder = frame - 3;
   return `/racoon-run-behind-${remainder}.png`;
 };
 
@@ -68,12 +68,12 @@ const Tube = () => {
   const materialRef = React.useRef();
   const texture = useTexture("/texture.png");
 
-  useFrame(() => {
-    if (materialRef.current) {
-      // @ts-ignore
-      materialRef.current.uniforms.uTime.value += 0.01;
-    }
-  });
+  /* useFrame(() => {
+   *   if (materialRef.current) {
+   *     // @ts-ignore
+   *     materialRef.current.uniforms.uTime.value += 0.01;
+   *   }
+   * }); */
 
   return (
     <mesh>
@@ -131,7 +131,7 @@ const Tube = () => {
             vec2 repeat = vec2(3.0, 128.0);
 
             uv = invertUV(uv, false, true);
-            {/* uv = rotateUV(uv, vec2(0.5, 0.5), radians(90.0)); */}
+            uv = rotateUV(uv, vec2(0.5, 0.5), radians(90.0)); 
             uv.x += sin((uv.y * 15.0) + time) * 0.15;
             uv = fract(uv * repeat);
 
@@ -176,12 +176,6 @@ export default function TunnelScene() {
     controllerRef.current?.draw(1);
   }, [controllerRef, racoonRef]);
 
-  const turnTimeline = getStaggeredTimeline({
-    start: 0,
-    end: 30,
-    chunks: 3,
-    overlap: 0,
-  });
   const runTimeline = getStaggeredTimeline({
     start: 0,
     end: 100,
@@ -202,8 +196,8 @@ export default function TunnelScene() {
           <div className={`${styles.container} test-juan`}>
             <Animation
               tween={{
-                start: turnTimeline[turnTimeline.length - 1].start,
-                end: 50,
+                start: 35,
+                end: 60,
                 target: inTunnelRef,
                 fromTo: [
                   {
@@ -226,7 +220,7 @@ export default function TunnelScene() {
             <Canvas>
               <Animation
                 tween={{
-                  start: 30,
+                  start: 40,
                   end: 100,
                   target: progress,
                   fromTo: [
@@ -260,10 +254,10 @@ export default function TunnelScene() {
                 end: 100,
                 target: racoonRef,
                 fromTo: [
-                  { left: "-60cqw", top: "55cqh" },
+                  { left: "-66cqw", top: "55cqh" },
                   {
                     keyframes: {
-                      "30%": {
+                      "40%": {
                         left: "0cqw",
                         top: "50cqh",
                         transform: "scale(1)",
@@ -281,28 +275,27 @@ export default function TunnelScene() {
             <Animation
               tween={{
                 start: 0,
-                end: 30,
-                target: racoonRef,
-                to: {
-                  onUpdate: function () {
-                    const closest = findClosestFrame(turnTimeline, this.time());
-                    controllerRef.current?.draw(closest + 1);
-                  },
-                },
-              }}
-            />
-            <Animation
-              tween={{
-                start: 30,
                 end: 100,
                 target: racoonRef,
                 to: {
                   onUpdate: function () {
                     const point = this.progress() * 100;
+                    if (point < 25) {
+                      controllerRef.current?.draw(1);
+                      return;
+                    }
+                    if (point < 33) {
+                      controllerRef.current?.draw(2);
+                      return;
+                    }
+                    if (point < 40) {
+                      controllerRef.current?.draw(3);
+                      return;
+                    }
+
                     const closest = findClosestFrame(runTimeline, point);
-                    const frame = (closest % 3) + 1;
-                    const offset = frame + 10;
-                    controllerRef.current?.draw(offset);
+                    const frame = (closest % 3) + 3 + 1;
+                    controllerRef.current?.draw(frame);
                   },
                 },
               }}
