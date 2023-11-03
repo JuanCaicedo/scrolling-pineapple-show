@@ -6,7 +6,10 @@ import {
 } from "@bsmnt/scrollytelling";
 import { useEffect, useState, useRef } from "react";
 import styles from "./index.module.css";
-import { ImageSequenceCanvasController, findClosestFrame } from "@/app/utils/ImageSequence";
+import {
+  ImageSequenceCanvasController,
+  findClosestFrame,
+} from "@/app/utils/ImageSequence";
 import Panel from "@/components/Panel";
 import { getStaggeredTimeline } from "@/app/utils/getStaggeredTimeline";
 
@@ -41,7 +44,7 @@ export default function Spin() {
 
   return (
     <Root>
-      <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`} top={0}>
+      <Pin childHeight={"100vh"} pinSpacerHeight={`3200vh`} top={0}>
         <Panel>
           <Animation
             tween={{

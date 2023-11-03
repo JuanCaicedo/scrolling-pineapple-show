@@ -107,7 +107,7 @@ export default function DanceScene() {
 
   return (
     <Root start="top top" end="bottom bottom" scrub={2}>
-      <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
+      <Pin childHeight={"100vh"} pinSpacerHeight={`3200vh`}>
         <Panel className={styles["party-background"]}>
           <DancePineapple />
           {fadeTimeline.map(({ start, end }, idx) => {

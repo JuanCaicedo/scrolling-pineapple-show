@@ -51,7 +51,7 @@ export default function IpodScene() {
 
   return (
     <Root>
-      <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`} top={0}>
+      <Pin childHeight={"100vh"} pinSpacerHeight={`3200vh`} top={0}>
         <Panel>
           <Animation
             tween={{

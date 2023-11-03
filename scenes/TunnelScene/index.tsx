@@ -189,14 +189,14 @@ export default function TunnelScene() {
     <Root start="top top" end="bottom bottom" scrub={2}>
       <Pin
         childHeight={"100vh"}
-        pinSpacerHeight={`800vh`}
+        pinSpacerHeight={`10000vh`}
         pinSpacerClassName={styles.spacer}
       >
         <Panel>
           <div className={`${styles.container} test-juan`}>
             <Animation
               tween={{
-                start: 35,
+                start: 25,
                 end: 60,
                 target: inTunnelRef,
                 fromTo: [
@@ -220,7 +220,7 @@ export default function TunnelScene() {
             <Canvas>
               <Animation
                 tween={{
-                  start: 40,
+                  start: 35,
                   end: 100,
                   target: progress,
                   fromTo: [
@@ -257,9 +257,10 @@ export default function TunnelScene() {
                   { left: "-66cqw", top: "55cqh" },
                   {
                     keyframes: {
-                      "40%": {
+                      "30%": {
                         left: "0cqw",
                         top: "50cqh",
+                        ease: "none",
                         transform: "scale(1)",
                       },
                       "100%": {

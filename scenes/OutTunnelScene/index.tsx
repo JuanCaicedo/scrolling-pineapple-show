@@ -12,7 +12,7 @@ export default function OutTunnelScene() {
   const togetherRef = useRef<HTMLImageElement>(null);
   return (
     <Root start="top top" end="bottom bottom" scrub={2}>
-      <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
+      <Pin childHeight={"100vh"} pinSpacerHeight={`3200vh`}>
         <Panel>
           <img
             src="/outside-cave-background.png"

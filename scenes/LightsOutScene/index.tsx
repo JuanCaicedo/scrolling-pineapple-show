@@ -58,8 +58,8 @@ function FadeOut({ name }: { name: string }) {
 
       <Animation
         tween={{
-          start: 5,
-          end: 10,
+          start: 25,
+          end: 30,
           target: canvasRef,
           fromTo: [{ opacity: 1 }, { opacity: 0, ease: "linear" }],
         }}
@@ -68,7 +68,7 @@ function FadeOut({ name }: { name: string }) {
         tween={{
           target: darkCanvasRef,
           start: 0,
-          end: 50,
+          end: 70,
           to: {
             onUpdate: function () {
               const point = this.progress() * 100;
@@ -90,7 +90,7 @@ export default function LightsOutScene() {
 
   return (
     <Root start="top top" end="bottom bottom" scrub={2}>
-      <Pin childHeight={"100vh"} pinSpacerHeight={`400vh`}>
+      <Pin childHeight={"100vh"} pinSpacerHeight={`3200vh`}>
         <Panel className={styles["party-background"]}>
           <FadeOut name="pineapple" />
           <FadeOut name="strawberry" />

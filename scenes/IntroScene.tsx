@@ -10,7 +10,7 @@ export default function IntroScene() {
 
   return (
     <Root>
-      <Pin childHeight={"100vh"} pinSpacerHeight={`800vh`}>
+      <Pin childHeight={"100vh"} pinSpacerHeight={`3200vh`}>
         <Panel>
           <Animation
             tween={{
