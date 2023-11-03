@@ -137,7 +137,9 @@ export default function DanceScene() {
             );
           })}
           {characters.map((name, idx) => {
-            return <Character name={name} ref={refs[idx]} />;
+            return (
+              <Character key={`${name}-${idx}`} name={name} ref={refs[idx]} />
+            );
           })}
         </Panel>
       </Pin>
