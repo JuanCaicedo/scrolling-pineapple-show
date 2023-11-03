@@ -3,26 +3,31 @@
   top: 33%;
   left: 50%;
   transform: translate(-50%, -50%);
+  aspect-ratio: 0.58019954;
 }
 .dancing-strawberry {
   width: 30%;
   right: 0;
   top: 27%;
+  aspect-ratio: 0.63896104;
 }
 .dancing-orange {
   width: 55%;
   left: 0;
   bottom: 0;
+  aspect-ratio: 0.88640275;
 }
 .dancing-pepper {
   width: 45%;
   bottom: 0;
   right: 0;
+  aspect-ratio: 0.38810484;
 }
 .dancing-avocado {
   width: 35%;
   top: 33%;
   left: 0;
+  aspect-ratio: 0.815427;
 }
 .start-hidden {
   opacity: 0;
