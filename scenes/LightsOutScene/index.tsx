@@ -13,18 +13,18 @@ function FadeOut({ name }: { name: string }) {
         ref={ref}
         src={`/dance-${name}.png`}
         alt={`Dancing ${name}`}
-        className={`${styles[className]} image-fixed ${styles["start-hidden"]} ${styles["color-highlight"]}`}
+        className={`${styles[className]} image ${styles["start-hidden"]} ${styles["color-highlight"]}`}
       />
       <img
         src={`/dark-${name}.png`}
         alt={`Dark dancing ${name}`}
-        className={`${styles[className]} image-fixed`}
+        className={`${styles[className]} image`}
       />
 
       <Animation
         tween={{
-          start: 0,
-          end: 20,
+          start: 5,
+          end: 10,
           target: ref,
           fromTo: [{ opacity: 1 }, { opacity: 0, ease: "linear" }],
         }}
