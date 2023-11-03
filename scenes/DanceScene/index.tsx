@@ -23,12 +23,12 @@ const Character = forwardRef<HTMLImageElement, { name: string }>(
           ref={ref}
           src={`/dance-${name}.png`}
           alt={`Dancing ${name}`}
-          className={`${styles[className]} image-fixed ${styles["color-highlight"]} ${styles["start-hidden"]}`}
+          className={`${styles[className]} image ${styles["color-highlight"]} ${styles["start-hidden"]}`}
         />
         <img
           src={`/dark-${name}.png`}
           alt={`Dark dancing ${name}`}
-          className={`${styles[className]} image-fixed`}
+          className={`${styles[className]} image`}
         />
       </>
     );
