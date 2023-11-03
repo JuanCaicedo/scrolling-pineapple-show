@@ -1,0 +1,72 @@
+.run-container {
+  position: absolute;
+  width: 100cqw;
+  top: 40cqh;
+}
+
+.together-container {
+  position: relative;
+}
+
+.pineapple {
+  position: absolute;
+  left: 5cqw;
+  top: 18cqh;
+  width: 50cqw;
+}
+
+.racoon {
+  position: absolute;
+  left: 45cqw;
+  top: 21cqh;
+  width: 50cqw;
+}
+
+.background {
+  background-color: #aab77f;
+  width: 100cqw;
+  height: 100cqh;
+  position: absolute;
+  z-index: -2;
+  top: 0;
+}
+
+.flowers {
+  background: url("/background-flowers.png") repeat-x;
+  background-size: 400cqw 30cqh;
+  height: 30cqh;
+  top: 50cqh;
+  animation: slide 15s linear infinite;
+  width: 800cqw;
+  position: absolute;
+}
+
+.trees {
+  background: url("/background-trees.png") repeat-x;
+  height: 60cqh;
+  background-size: 200cqw 60cqh;
+  top: 14cqh;
+  width: 400cqw;
+  position: absolute;
+  animation: slide 20s linear infinite;
+
+}
+
+.mountains {
+  background: url("/background-mountains.png") repeat-x;
+  height: 40cqh;
+  background-size: 200cqw 40cqh;
+  width: 400cqw;
+  position: absolute;
+  left: 0;
+  animation: slide 20s linear infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* The image width */
+  }
+}

@@ -18,7 +18,7 @@ import LightsOutScene from "@/scenes/LightsOutScene";
 import AngryScene from "@/scenes/AngryScene";
 import TunnelScene from "@/scenes/TunnelScene";
 import OutTunnelScene from "@/scenes/OutTunnelScene";
-import ParallaxScene from "@/scenes/ParallaxScene";
+import ParallaxInfiniteScene from "@/scenes/ParallaxInfiniteScene";
 
 export default function Home() {
   return (
@@ -32,7 +32,7 @@ export default function Home() {
       <AngryScene />
       <TunnelScene />
       <OutTunnelScene />
-      <ParallaxScene />
+      <ParallaxInfiniteScene />
     </main>
   );
 }
