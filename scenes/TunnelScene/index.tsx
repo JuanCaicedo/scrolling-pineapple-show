@@ -131,7 +131,7 @@ const Tube = () => {
             vec2 repeat = vec2(3.0, 128.0);
 
             uv = invertUV(uv, false, true);
-            uv = rotateUV(uv, vec2(0.5, 0.5), radians(90.0));
+            {/* uv = rotateUV(uv, vec2(0.5, 0.5), radians(90.0)); */}
             uv.x += sin((uv.y * 15.0) + time) * 0.15;
             uv = fract(uv * repeat);
 
@@ -205,10 +205,15 @@ export default function TunnelScene() {
                 start: turnTimeline[turnTimeline.length - 1].start,
                 end: 50,
                 target: inTunnelRef,
-                to: {
-                  transform: "scale(10)",
-                  ease: "linear",
-                },
+                fromTo: [
+                  {
+                    transform: "scale(1)",
+                  },
+                  {
+                    transform: "scale(10)",
+                    ease: "linear",
+                  },
+                ],
               }}
             />
             <Image
@@ -221,13 +226,16 @@ export default function TunnelScene() {
             <Canvas>
               <Animation
                 tween={{
-                  start: turnTimeline[turnTimeline.length - 1].start,
+                  start: 30,
                   end: 100,
                   target: progress,
-                  to: {
-                    value: 1,
-                    onUpdate: (s) => update(progress.value),
-                  },
+                  fromTo: [
+                    { value: 0 },
+                    {
+                      value: 1,
+                      onUpdate: (s) => update(progress.value),
+                    },
+                  ],
                 }}
               />
 
@@ -294,7 +302,6 @@ export default function TunnelScene() {
                     const closest = findClosestFrame(runTimeline, point);
                     const frame = (closest % 3) + 1;
                     const offset = frame + 10;
-                    console.log("offset", offset);
                     controllerRef.current?.draw(offset);
                   },
                 },
