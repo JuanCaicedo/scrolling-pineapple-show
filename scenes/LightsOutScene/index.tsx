@@ -7,7 +7,8 @@ import {
 import Panel from "@/components/Panel";
 
 import styles from "./index.module.css";
-import { useEffect, forwardRef, useRef } from "react";
+import { useEffect, useRef } from "react";
+import { ImageSequenceCanvasController } from "@/app/utils/ImageSequence";
 
 function FadeOut({ name }: { name: string }) {
   const controllerRef = useRef<ImageSequenceCanvasController>(null);
