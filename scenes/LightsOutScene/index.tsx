@@ -68,11 +68,11 @@ function FadeOut({ name }: { name: string }) {
         tween={{
           target: darkCanvasRef,
           start: 0,
-          end: 70,
+          end: 100,
           to: {
             onUpdate: function () {
               const point = this.progress() * 100;
-              if (point > 50) {
+              if (point > 60) {
                 darkControllerRef.current?.draw(2);
                 return;
               }
