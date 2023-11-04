@@ -14,6 +14,7 @@ import IpodScene from "@/scenes/IpodScene";
 import Spin from "@/scenes/Spin";
 import DanceScene from "@/scenes/DanceScene";
 import StealScene from "@/scenes/StealScene";
+import AfterStealScene from "@/scenes/AfterStealScene";
 import LightsOutScene from "@/scenes/LightsOutScene";
 import AngryScene from "@/scenes/AngryScene";
 import TunnelScene from "@/scenes/TunnelScene";
@@ -29,6 +30,7 @@ export default function Home() {
       <DanceScene />
       <StealScene />
       <LightsOutScene />
+      <AfterStealScene />
       <AngryScene />
       <TunnelScene />
       <OutTunnelScene />

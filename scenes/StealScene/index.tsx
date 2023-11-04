@@ -15,7 +15,7 @@ import styles from "./index.module.css";
 import { getStaggeredTimeline } from "@/app/utils/getStaggeredTimeline";
 import Panel from "@/components/Panel";
 
-export default function IpodScene() {
+export default function StealScene() {
   const ipodRef = useRef<HTMLImageElement>(null);
   const plugRef = useRef<HTMLImageElement>(null);
   const handRef = useRef<HTMLImageElement>(null);
