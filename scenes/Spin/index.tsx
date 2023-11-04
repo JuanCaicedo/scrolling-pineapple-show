@@ -33,6 +33,7 @@ export default function Spin() {
 
   useEffect(() => {
     controllerRef.current?.preload(firstFrame, lastFrame);
+    controllerRef.current?.draw(1);
     if (canvasRef.current) {
       canvasRef.current.width = window.innerWidth;
       canvasRef.current.height = window.innerWidth;
@@ -60,16 +61,14 @@ export default function Spin() {
               },
             }}
           />
-          <div className={styles.container}>
-            <ImageSequenceCanvas
-              className={"image canvas"}
-              controllerRef={controllerRef}
-              ref={canvasRef}
-              getFrameSrc={(frame) => spinSrc(frame)}
-              width={2000}
-              height={2000}
-            />
-          </div>
+          <ImageSequenceCanvas
+            className={`image canvas ${styles.container}`}
+            controllerRef={controllerRef}
+            ref={canvasRef}
+            getFrameSrc={(frame) => spinSrc(frame)}
+            width={2000}
+            height={2000}
+          />
         </Panel>
       </Pin>
     </Root>

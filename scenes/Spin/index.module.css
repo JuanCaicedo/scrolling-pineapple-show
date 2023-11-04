@@ -1,5 +1,6 @@
 .container {
-  position: relative;
   width: 100cqw;
-  height: 100cqh;
+  top: 45cqh;
+  aspect-ratio: 0.89535567;
+  transform: translateY(-50%);
 }
