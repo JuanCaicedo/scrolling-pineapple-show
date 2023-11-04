@@ -13,49 +13,45 @@ export default function AngryScene() {
   const bottomBarRef = useRef<HTMLDivElement>(null);
 
   return (
-    <Root start="top top" end="bottom bottom" scrub={2}>
-      <Pin childHeight={"100vh"} pinSpacerHeight={`3200vh`}>
-        <Panel>
-          <img
-            src="/angry.png"
-            alt="angry"
-            ref={angryRef}
-            className={`image ${styles["angry"]}`}
-          />
-          <Animation
-            tween={{
-              start: 0,
-              end: 100,
-              target: angryRef,
-              fromTo: [{ transform: "scale(1)" }, { transform: "scale(1.2)" }],
-            }}
-          />
-          <div className={`image ${styles["top-bar"]}`} ref={topBarRef} />
-          <Animation
-            tween={{
-              start: 0,
-              end: 100,
-              target: topBarRef,
-              fromTo: [
-                { transform: "rotate(90deg)", top: "-78cqh" },
-                { transform: "rotate(99deg)", top: "-45cqh" },
-              ],
-            }}
-          />
-          <div className={`image ${styles["bottom-bar"]}`} ref={bottomBarRef} />
-          <Animation
-            tween={{
-              start: 0,
-              end: 100,
-              target: bottomBarRef,
-              fromTo: [
-                { transform: "rotate(90deg)", bottom: "-78cqh" },
-                { transform: "rotate(92deg)", bottom: "-45cqh" },
-              ],
-            }}
-          />
-        </Panel>
-      </Pin>
-    </Root>
+    <Panel>
+      <img
+        src="/angry.png"
+        alt="angry"
+        ref={angryRef}
+        className={`image ${styles["angry"]}`}
+      />
+      <Animation
+        tween={{
+          start: 0,
+          end: 100,
+          target: angryRef,
+          fromTo: [{ transform: "scale(1)" }, { transform: "scale(1.2)" }],
+        }}
+      />
+      <div className={`image ${styles["top-bar"]}`} ref={topBarRef} />
+      <Animation
+        tween={{
+          start: 0,
+          end: 100,
+          target: topBarRef,
+          fromTo: [
+            { transform: "rotate(90deg)", top: "-78cqh" },
+            { transform: "rotate(99deg)", top: "-45cqh" },
+          ],
+        }}
+      />
+      <div className={`image ${styles["bottom-bar"]}`} ref={bottomBarRef} />
+      <Animation
+        tween={{
+          start: 0,
+          end: 100,
+          target: bottomBarRef,
+          fromTo: [
+            { transform: "rotate(90deg)", bottom: "-78cqh" },
+            { transform: "rotate(92deg)", bottom: "-45cqh" },
+          ],
+        }}
+      />
+    </Panel>
   );
 }

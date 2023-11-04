@@ -18,3 +18,7 @@
   height: calc(100vh - (var(--padding-size) * 2));
   position: absolute;
 }
+
+.spacer {
+  height: 100cqh;
+}

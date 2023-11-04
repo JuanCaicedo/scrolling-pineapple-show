@@ -89,16 +89,12 @@ export default function LightsOutScene() {
   const pineappleRef = useRef<HTMLImageElement>(null);
 
   return (
-    <Root start="top top" end="bottom bottom" scrub={2}>
-      <Pin childHeight={"100vh"} pinSpacerHeight={`3200vh`}>
-        <Panel className={styles["party-background"]}>
-          <FadeOut name="pineapple" />
-          <FadeOut name="strawberry" />
-          <FadeOut name="avocado" />
-          <FadeOut name="orange" />
-          <FadeOut name="pepper" />
-        </Panel>
-      </Pin>
-    </Root>
+    <Panel className={styles["party-background"]}>
+      <FadeOut name="pineapple" />
+      <FadeOut name="strawberry" />
+      <FadeOut name="avocado" />
+      <FadeOut name="orange" />
+      <FadeOut name="pepper" />
+    </Panel>
   );
 }

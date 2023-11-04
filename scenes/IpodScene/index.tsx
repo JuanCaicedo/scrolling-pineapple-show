@@ -50,61 +50,57 @@ export default function IpodScene() {
   const lastTimeline = spinTimeline[spinTimeline.length - 1];
 
   return (
-    <Root>
-      <Pin childHeight={"100vh"} pinSpacerHeight={`3200vh`} top={0}>
-        <Panel>
-          <Animation
-            tween={{
-              target: canvasRef,
-              start: firstTimeline.start,
-              end: lastTimeline.end,
-              to: {
-                onUpdate: function () {
-                  const point = this.progress() * 100;
-                  const closest = findClosestFrame(spinTimeline, point);
-                  const frame = (closest % ipodFrames.length) + 1;
-                  controllerRef.current?.draw(frame);
-                },
-              },
-            }}
-          />
-          <Animation
-            tween={{
-              target: canvasRef,
-              start: 0,
-              end: lastTimeline.end,
-              fromTo: [{ top: "-20cqh" }, { top: "55cqh" }],
-            }}
-          />
-          <div className={styles.container}>
-            <ImageSequenceCanvas
-              ref={canvasRef}
-              controllerRef={controllerRef}
-              getFrameSrc={(frame) => {
-                const src = spinSrc(frame);
-                return src;
-              }}
-              className={`image canvas ${styles.ipod}`}
-              width={2000}
-              height={2000}
-            />
-          </div>
-          <Animation
-            tween={{
-              target: plugRef,
-              start: lastTimeline.end,
-              end: 80,
-              fromTo: [{ top: "-45cqh" }, { top: "-3cqh" }],
-            }}
-          />
-          <img
-            ref={plugRef}
-            src={"/plug.png"}
-            alt="Aux plug"
-            className={`image ${styles.plug}`}
-          />
-        </Panel>
-      </Pin>
-    </Root>
+    <Panel>
+      <Animation
+        tween={{
+          target: canvasRef,
+          start: firstTimeline.start,
+          end: lastTimeline.end,
+          to: {
+            onUpdate: function () {
+              const point = this.progress() * 100;
+              const closest = findClosestFrame(spinTimeline, point);
+              const frame = (closest % ipodFrames.length) + 1;
+              controllerRef.current?.draw(frame);
+            },
+          },
+        }}
+      />
+      <Animation
+        tween={{
+          target: canvasRef,
+          start: 0,
+          end: lastTimeline.end,
+          fromTo: [{ top: "-20cqh" }, { top: "55cqh" }],
+        }}
+      />
+      <div className={styles.container}>
+        <ImageSequenceCanvas
+          ref={canvasRef}
+          controllerRef={controllerRef}
+          getFrameSrc={(frame) => {
+            const src = spinSrc(frame);
+            return src;
+          }}
+          className={`image canvas ${styles.ipod}`}
+          width={2000}
+          height={2000}
+        />
+      </div>
+      <Animation
+        tween={{
+          target: plugRef,
+          start: lastTimeline.end,
+          end: 80,
+          fromTo: [{ top: "-45cqh" }, { top: "-3cqh" }],
+        }}
+      />
+      <img
+        ref={plugRef}
+        src={"/plug.png"}
+        alt="Aux plug"
+        className={`image ${styles.plug}`}
+      />
+    </Panel>
   );
 }

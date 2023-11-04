@@ -106,43 +106,37 @@ export default function DanceScene() {
   const refs = [avocadoRef, strawberryRef, orangeRef, pepperRef];
 
   return (
-    <Root start="top top" end="bottom bottom" scrub={2}>
-      <Pin childHeight={"100vh"} pinSpacerHeight={`3200vh`}>
-        <Panel className={styles["party-background"]}>
-          <DancePineapple />
-          {fadeTimeline.map(({ start, end }, idx) => {
-            const remainder = idx % characters.length;
-            const ref = refs[remainder];
-            return (
-              <Animation
-                key={`animation-${idx}`}
-                tween={{
-                  target: ref,
-                  start,
-                  end,
-                  fromTo: [
-                    {
-                      opacity: 0,
-                    },
-                    {
-                      keyframes: {
-                        "0%": { opacity: 0 },
-                        "50%": { opacity: 1 },
-                        "100%": { opacity: 0 },
-                      },
-                    },
-                  ],
-                }}
-              />
-            );
-          })}
-          {characters.map((name, idx) => {
-            return (
-              <Character key={`${name}-${idx}`} name={name} ref={refs[idx]} />
-            );
-          })}
-        </Panel>
-      </Pin>
-    </Root>
+    <Panel className={styles["party-background"]}>
+      <DancePineapple />
+      {fadeTimeline.map(({ start, end }, idx) => {
+        const remainder = idx % characters.length;
+        const ref = refs[remainder];
+        return (
+          <Animation
+            key={`animation-${idx}`}
+            tween={{
+              target: ref,
+              start,
+              end,
+              fromTo: [
+                {
+                  opacity: 0,
+                },
+                {
+                  keyframes: {
+                    "0%": { opacity: 0 },
+                    "50%": { opacity: 1 },
+                    "100%": { opacity: 0 },
+                  },
+                },
+              ],
+            }}
+          />
+        );
+      })}
+      {characters.map((name, idx) => {
+        return <Character key={`${name}-${idx}`} name={name} ref={refs[idx]} />;
+      })}
+    </Panel>
   );
 }

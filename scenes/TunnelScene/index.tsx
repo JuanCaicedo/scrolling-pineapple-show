@@ -186,156 +186,148 @@ export default function TunnelScene() {
   const outTunnelRef = useRef<HTMLImageElement>(null);
 
   return (
-    <Root start="top top" end="bottom bottom" scrub={2}>
-      <Pin
-        childHeight={"100vh"}
-        pinSpacerHeight={`10000vh`}
-        pinSpacerClassName={styles.spacer}
-      >
-        <Panel>
-          <div className={`${styles.container} test-juan`}>
-            <Animation
-              tween={{
-                start: 25,
-                end: 60,
-                target: inTunnelRef,
-                fromTo: [
-                  {
+    <Panel pinSpacerHeight={`10000vh`}>
+      <div className={`${styles.container} test-juan`}>
+        <Animation
+          tween={{
+            start: 25,
+            end: 60,
+            target: inTunnelRef,
+            fromTo: [
+              {
+                transform: "scale(1)",
+              },
+              {
+                transform: "scale(10)",
+                ease: "linear",
+              },
+            ],
+          }}
+        />
+        <Image
+          ref={inTunnelRef}
+          src="/tunnel-inside.png"
+          fill={true}
+          alt="inside tunnel"
+          className={`${styles["tunnel-inside"]}`}
+        />
+        <Canvas>
+          <Animation
+            tween={{
+              start: 35,
+              end: 100,
+              target: progress,
+              fromTo: [
+                { value: 0 },
+                {
+                  value: 1,
+                  onUpdate: (s) => update(progress.value),
+                },
+              ],
+            }}
+          />
+
+          <PerspectiveCamera
+            position={[0, 0, 20]}
+            makeDefault
+            ref={(ref) => {
+              if (!ref) return;
+
+              // @ts-ignore
+              camRef.current = ref;
+              update(0);
+            }}
+          />
+
+          <Tube />
+        </Canvas>
+
+        <Animation
+          tween={{
+            start: 0,
+            end: 100,
+            target: racoonRef,
+            fromTo: [
+              { left: "-66cqw", top: "55cqh" },
+              {
+                keyframes: {
+                  "30%": {
+                    left: "0cqw",
+                    top: "50cqh",
+                    ease: "none",
                     transform: "scale(1)",
                   },
-                  {
-                    transform: "scale(10)",
-                    ease: "linear",
-                  },
-                ],
-              }}
-            />
-            <Image
-              ref={inTunnelRef}
-              src="/tunnel-inside.png"
-              fill={true}
-              alt="inside tunnel"
-              className={`${styles["tunnel-inside"]}`}
-            />
-            <Canvas>
-              <Animation
-                tween={{
-                  start: 35,
-                  end: 100,
-                  target: progress,
-                  fromTo: [
-                    { value: 0 },
-                    {
-                      value: 1,
-                      onUpdate: (s) => update(progress.value),
-                    },
-                  ],
-                }}
-              />
-
-              <PerspectiveCamera
-                position={[0, 0, 20]}
-                makeDefault
-                ref={(ref) => {
-                  if (!ref) return;
-
-                  // @ts-ignore
-                  camRef.current = ref;
-                  update(0);
-                }}
-              />
-
-              <Tube />
-            </Canvas>
-
-            <Animation
-              tween={{
-                start: 0,
-                end: 100,
-                target: racoonRef,
-                fromTo: [
-                  { left: "-66cqw", top: "55cqh" },
-                  {
-                    keyframes: {
-                      "30%": {
-                        left: "0cqw",
-                        top: "50cqh",
-                        ease: "none",
-                        transform: "scale(1)",
-                      },
-                      "100%": {
-                        top: "94cqi",
-                        left: "0cqi",
-                        transform: "scale(0.50)",
-                      },
-                    },
-                  },
-                ],
-              }}
-            />
-            <Animation
-              tween={{
-                start: 0,
-                end: 100,
-                target: racoonRef,
-                to: {
-                  onUpdate: function () {
-                    const point = this.progress() * 100;
-                    if (point < 25) {
-                      controllerRef.current?.draw(1);
-                      return;
-                    }
-                    if (point < 33) {
-                      controllerRef.current?.draw(2);
-                      return;
-                    }
-                    if (point < 40) {
-                      controllerRef.current?.draw(3);
-                      return;
-                    }
-
-                    const closest = findClosestFrame(runTimeline, point);
-                    const frame = (closest % 3) + 3 + 1;
-                    controllerRef.current?.draw(frame);
+                  "100%": {
+                    top: "94cqi",
+                    left: "0cqi",
+                    transform: "scale(0.50)",
                   },
                 },
-              }}
-            />
+              },
+            ],
+          }}
+        />
+        <Animation
+          tween={{
+            start: 0,
+            end: 100,
+            target: racoonRef,
+            to: {
+              onUpdate: function () {
+                const point = this.progress() * 100;
+                if (point < 25) {
+                  controllerRef.current?.draw(1);
+                  return;
+                }
+                if (point < 33) {
+                  controllerRef.current?.draw(2);
+                  return;
+                }
+                if (point < 40) {
+                  controllerRef.current?.draw(3);
+                  return;
+                }
 
-            <ImageSequenceCanvas
-              className={`${styles["canvas"]} ${styles["racoon"]} image`}
-              controllerRef={controllerRef}
-              ref={racoonRef}
-              getFrameSrc={(frame) => {
-                const src = turnSrc(frame);
-                return src;
-              }}
-              width={2000}
-              height={2000}
-            />
+                const closest = findClosestFrame(runTimeline, point);
+                const frame = (closest % 3) + 3 + 1;
+                controllerRef.current?.draw(frame);
+              },
+            },
+          }}
+        />
 
-            <Animation
-              tween={{
-                start: 70,
-                end: 100,
-                target: outTunnelRef,
-                from: {
-                  transform: "scale(0.25)",
-                  ease: "linear",
-                },
-              }}
-            />
-            <Image
-              ref={outTunnelRef}
-              src="/outside-tunnel.png"
-              fill={true}
-              alt="outside tunnel"
-              className={`${styles["tunnel-outside"]}`}
-            />
-            <div className={styles.background} />
-          </div>
-        </Panel>
-      </Pin>
-    </Root>
+        <ImageSequenceCanvas
+          className={`${styles["canvas"]} ${styles["racoon"]} image`}
+          controllerRef={controllerRef}
+          ref={racoonRef}
+          getFrameSrc={(frame) => {
+            const src = turnSrc(frame);
+            return src;
+          }}
+          width={2000}
+          height={2000}
+        />
+
+        <Animation
+          tween={{
+            start: 70,
+            end: 100,
+            target: outTunnelRef,
+            from: {
+              transform: "scale(0.25)",
+              ease: "linear",
+            },
+          }}
+        />
+        <Image
+          ref={outTunnelRef}
+          src="/outside-tunnel.png"
+          fill={true}
+          alt="outside tunnel"
+          className={`${styles["tunnel-outside"]}`}
+        />
+        <div className={styles.background} />
+      </div>
+    </Panel>
   );
 }
