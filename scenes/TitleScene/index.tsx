@@ -6,6 +6,8 @@ import { Animation } from "@bsmnt/scrollytelling";
 
 export default function TitleScene() {
   const theRef = useRef<HTMLDivElement>(null);
+  const scrollingBlockRef = useRef<HTMLDivElement>(null);
+  const pineappleRef = useRef<HTMLDivElement>(null);
 
   const timeline = getStaggeredTimeline({
     start: 0,
@@ -22,8 +24,13 @@ export default function TitleScene() {
           </div>
           <div className={styles["see-through"]}>The</div>
         </div>
-        <div className={styles["scrolling"]}>Scrolling</div>
-        <div className={styles["pineapple"]}>Pineapple</div>
+        <div className={styles["scrolling-container"]}>
+          <div className={styles["scrolling"]}>Scrolling</div>
+          <div className={styles["scrolling-block"]} ref={scrollingBlockRef} />
+        </div>
+        <div className={styles["pineapple"]} ref={pineappleRef}>
+          Pineapple
+        </div>
         <div className={styles["show"]}>Show</div>
       </div>
       <Animation
@@ -38,6 +45,37 @@ export default function TitleScene() {
             {
               left: "auto",
               ease: "elastic.out(1,0.7)",
+            },
+          ],
+        }}
+      />
+      <Animation
+        tween={{
+          start: timeline[1].start,
+          end: timeline[1].end,
+          target: scrollingBlockRef,
+          fromTo: [
+            {
+              height: "100%",
+            },
+            {
+              height: "0%",
+              ease: "none",
+            },
+          ],
+        }}
+      />
+      <Animation
+        tween={{
+          start: timeline[2].start,
+          end: timeline[2].end,
+          target: pineappleRef,
+          fromTo: [
+            {
+              opacity: 0,
+            },
+            {
+              opacity: 1,
             },
           ],
         }}
