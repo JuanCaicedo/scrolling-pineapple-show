@@ -7,10 +7,7 @@ import styles from "./index.module.css";
 import Image from "next/image";
 
 import {
-  Pin,
-  Root,
   Animation,
-  Waypoint,
   ImageSequenceCanvas,
 } from "@bsmnt/scrollytelling";
 import { useRef } from "react";

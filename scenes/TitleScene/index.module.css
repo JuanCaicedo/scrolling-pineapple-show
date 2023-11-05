@@ -9,10 +9,16 @@
 
 .the {
   color: #adfa2a;
+  position: absolute;
 }
 
 .scrolling {
   color: #2aadfa;
+}
+
+.scrolling-block {
+  background-color: #111111;
+  z-index: 1;
 }
 
 .show {
