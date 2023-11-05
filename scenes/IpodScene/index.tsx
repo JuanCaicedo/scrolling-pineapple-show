@@ -92,7 +92,7 @@ export default function IpodScene() {
           target: plugRef,
           start: lastTimeline.end,
           end: 80,
-          fromTo: [{ top: "-45cqh" }, { top: "-3cqh" }],
+          fromTo: [{ top: "-46cqh" }, { top: "-3cqh" }],
         }}
       />
       <img

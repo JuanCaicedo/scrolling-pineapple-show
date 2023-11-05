@@ -7,14 +7,16 @@ export default function Panel({
   children,
   className = "",
   pinSpacerHeight = `3200vh`,
+  skipSpacer,
 }: {
   children?: ReactNode;
   className?: string;
   pinSpacerHeight?: string;
+  skipSpacer?: boolean;
 }) {
   return (
     <>
-      <div className={styles["spacer"]} />
+      {!skipSpacer && <div className={styles["spacer"]} />}
       <Root>
         <Pin childHeight={"100vh"} pinSpacerHeight={pinSpacerHeight} top="0">
           <div className={styles["panel-container"]}>

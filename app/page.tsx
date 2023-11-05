@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import styles from "./page.module.css";
 import Head from "next/head";
+import TitleScene from "@/scenes/TitleScene";
 import IntroScene from "@/scenes/IntroScene";
 import IpodScene from "@/scenes/IpodScene";
 import Spin from "@/scenes/Spin";
@@ -24,6 +25,7 @@ import ParallaxInfiniteScene from "@/scenes/ParallaxInfiniteScene";
 export default function Home() {
   return (
     <main className="">
+      <TitleScene />
       <IntroScene />
       <IpodScene />
       <Spin />

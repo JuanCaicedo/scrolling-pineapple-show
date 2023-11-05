@@ -15,7 +15,7 @@ export default function IntroScene() {
         tween={{
           start: 0,
           end: 10,
-          fromTo: [{ top: "-120cqh" }, { top: "-30cqh", ease: "linear" }],
+          fromTo: [{ top: "-120cqh" }, { top: "-31cqh", ease: "linear" }],
         }}
       >
         <div className={`${styles.image} ${styles.spotlight}`} />
