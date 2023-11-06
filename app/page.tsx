@@ -22,9 +22,39 @@ import TunnelScene from "@/scenes/TunnelScene";
 import OutTunnelScene from "@/scenes/OutTunnelScene";
 import ParallaxInfiniteScene from "@/scenes/ParallaxInfiniteScene";
 
+function DetectScroll() {
+  let lastPos,
+    newPos,
+    timer,
+    delta,
+    delay = 50; // in "ms" (higher means lower fidelity )
+
+  function clear() {
+    lastPos = null;
+    delta = 0;
+  }
+
+  useEffect(() => {
+    window.onscroll = () => {
+      newPos = window.scrollY;
+      if (lastPos != null) {
+        // && newPos < maxScroll
+        delta = newPos - lastPos;
+      }
+
+      lastPos = newPos;
+      clearTimeout(timer);
+      timer = setTimeout(clear, delay);
+    };
+  }, []);
+
+  // listen to "scroll" event
+}
+
 export default function Home() {
   return (
     <main className="">
+      <DetectScroll />
       <TitleScene />
       <IntroScene />
       <IpodScene />
