@@ -60,3 +60,10 @@
 .see-through {
   opacity: 0;
 }
+.show-absolute {
+  position: absolute;
+  left: 0;
+}
+.show-container {
+  position: relative;
+}
