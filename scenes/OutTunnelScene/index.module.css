@@ -14,10 +14,10 @@
 
 .racoon {
   position: absolute;
-  left: 20cqw;
+  left: 35cqw;
   top: 30cqh;
-  transform: scale(1.75);
-  transform-origin: left center;
+  aspect-ratio: 1.18486172;
+  width: 80cqw;
 }
 
 .tunnel-exit {

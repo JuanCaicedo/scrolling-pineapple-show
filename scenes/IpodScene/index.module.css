@@ -21,12 +21,14 @@
 }
 
 .ipod {
-  z-index:1;
-  left: 5cqw;
-  transform: translateY(-50%);
+  z-index: 1;
+  left: 50cqw;
+  transform: translate(-50%, -100%);
+  width: 60cqw;
+  aspect-ratio: 0.43876518;
 }
 
 .plug {
   left: 5cqw;
-  width:100%;
+  width: 100%;
 }

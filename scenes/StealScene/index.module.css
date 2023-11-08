@@ -1,8 +1,10 @@
 .ipod {
   z-index: 1;
-  left: 5cqw;
-  transform: translateY(-50%);
-  top: 58cqh;
+  left: 50cqw;
+  transform: translate(-50%, -50%);
+  top: 65cqh;
+  width: 60cqw;
+  aspect-ratio: 0.43876518;
 }
 
 .plug {
