@@ -6,10 +6,7 @@ import * as THREE from "three";
 import styles from "./index.module.css";
 import Image from "next/image";
 
-import {
-  Animation,
-  ImageSequenceCanvas,
-} from "@bsmnt/scrollytelling";
+import { Animation, ImageSequenceCanvas } from "@bsmnt/scrollytelling";
 import { useRef } from "react";
 import Panel from "@/components/Panel";
 
@@ -183,7 +180,7 @@ export default function TunnelScene() {
   const outTunnelRef = useRef<HTMLImageElement>(null);
 
   return (
-    <Panel pinSpacerHeight={`10000vh`}>
+    <Panel pinSpacerHeight={`5000vh`}>
       <div className={`${styles.container} test-juan`}>
         <Animation
           tween={{
