@@ -17,10 +17,10 @@ export default function ScrollTextScene() {
             font-size: 32px;
           }
           @container (min-width: 425px) {
-            font-size: 48px;
+            font-size: 42px;
           }
           @container (min-width: 475px) {
-            font-size: 64px;
+            font-size: 54px;
           }
         }
       `}</style>

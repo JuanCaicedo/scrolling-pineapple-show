@@ -17,12 +17,12 @@ export default function TitleScene() {
 
   const timeline = getStaggeredTimeline({
     start: 0,
-    end: 40,
+    end: 60,
     chunks: 4,
   });
   const showTimeline = getStaggeredTimeline({
     start: timeline[3].start,
-    end: 60,
+    end: 80,
     chunks: 4,
   });
 
