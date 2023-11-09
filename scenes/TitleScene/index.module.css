@@ -4,7 +4,17 @@
   justify-content: center;
   align-items: center;
   height: 100cqh;
-  font-size: 96px;
+  font-size: 48px;
+
+  @container (min-width: 375px) {
+    font-size: 64px;
+  }
+  @container (min-width: 425px) {
+    font-size: 76px;
+  }
+  @container (min-width: 475px) {
+    font-size: 94px;
+  }
 }
 
 .the {
@@ -21,12 +31,12 @@
 }
 
 .scrolling-block {
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   background-color: #111111;
   z-index: 1;
   width: 100%;
-  position: absolute
+  position: absolute;
 }
 
 .show {
