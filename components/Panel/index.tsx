@@ -6,7 +6,7 @@ import styles from "./index.module.css";
 export default function Panel({
   children,
   className = "",
-  pinSpacerHeight = `1000vh`,
+  pinSpacerHeight = `2000vh`,
   skipSpacer,
 }: {
   children?: ReactNode;
