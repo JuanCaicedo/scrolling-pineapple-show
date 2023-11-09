@@ -23,6 +23,7 @@ const firstFrame = ipodFrames[0];
 const lastFrame = ipodFrames[ipodFrames.length - 1];
 
 export default function IpodScene() {
+  const lightupRef = useRef<HTMLImageElement>(null);
   const plugRef = useRef<HTMLImageElement>(null);
   const controllerRef = useRef<ImageSequenceCanvasController>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -87,7 +88,7 @@ export default function IpodScene() {
         tween={{
           target: plugRef,
           start: lastTimeline.end,
-          end: 80,
+          end: 70,
           fromTo: [{ top: "-46cqh" }, { top: "-3cqh" }],
         }}
       />
@@ -96,6 +97,20 @@ export default function IpodScene() {
         src={"/plug.png"}
         alt="Aux plug"
         className={`image ${styles.plug}`}
+      />
+      <Animation
+        tween={{
+          target: lightupRef,
+          start: 80,
+          end: 90,
+          fromTo: [{ opacity: 0, top: "95cqh" }, { opacity: 1 }],
+        }}
+      />
+      <img
+        ref={lightupRef}
+        src={"/ipod-light.png"}
+        alt="lit ipod"
+        className={`image canvas ${styles.ipod}`}
       />
     </Panel>
   );
