@@ -27,7 +27,7 @@ export default function TitleScene() {
   });
 
   return (
-    <Panel skipSpacer>
+    <Panel>
       <div className={styles["title-text"]}>
         <div className={styles["container"]}>
           <div className={styles["the"]} ref={theRef}>
@@ -131,7 +131,7 @@ export default function TitleScene() {
                   },
                   {
                     opacity: 1,
-                    ease: 'none'
+                    ease: "none",
                   },
                 ],
               }}
