@@ -2,12 +2,10 @@
 
 import { Pin, Root, Animation } from "@bsmnt/scrollytelling";
 import Image from "next/image";
-import PineappleRun from "@/components/PineappleRun";
 import { useRef } from "react";
 import Panel from "@/components/Panel";
 
 import styles from "./index.module.css";
-import RacoonRun from "@/components/RacoonRun";
 
 export default function Parallax() {
   return (
