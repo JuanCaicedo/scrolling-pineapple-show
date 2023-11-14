@@ -1,0 +1,19 @@
+.pineapple {
+  position: absolute;
+  left: 0;
+}
+
+.racoon {
+  position: absolute;
+  right: 0;
+}
+
+.relative-container {
+  position: relative;
+  width: 700px;
+  border: 1px solid cyan;
+}
+
+.absolute-container {
+  position: absolute;
+}
