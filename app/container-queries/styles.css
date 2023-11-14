@@ -22,16 +22,11 @@
 
 .pineapple {
   position: absolute;
-  width: 200px;
-  height: 200px;
-  left: 1cqw;
-  top: 1cqh;
+  left: 0;
 }
 
 .racoon {
   position: absolute;
-  width: 200px;
-  height: 200px;
   right: 0;
 }
 

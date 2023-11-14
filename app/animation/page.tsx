@@ -16,9 +16,9 @@ export default function AnimationDemo() {
             end: 100,
             fromTo: [
               {
-                width: "0px",
+                left: "0px",
               },
-              { width: "600px" },
+              { left: "600px" },
             ],
           }}
         />
