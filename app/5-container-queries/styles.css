@@ -10,7 +10,7 @@
 }
 
 .demo-panel {
-  container-type: inline-size;
+  container-type: size;
   overflow: hidden;
   background-color: #111111;
   aspect-ratio: 0.5;
