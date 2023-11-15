@@ -5,11 +5,9 @@ import "./styles.css";
 
 export default function Position() {
   return (
-    <div className="absolute-container">
-      <div className="relative-container">
-        <img src="/pineapple-run-1.png" className="small-image pineapple" />
-        <img src="/racoon-run-1.png" className="small-image racoon" />
-      </div>
+    <div className="relative-container">
+      <img src="/pineapple-run-1.png" className="small-image pineapple" />
+      <img src="/racoon-run-1.png" className="small-image racoon" />
     </div>
   );
 }
