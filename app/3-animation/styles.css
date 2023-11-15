@@ -1,0 +1,18 @@
+.pineapple {
+  position: absolute;
+  top:0;
+  right: 0;
+}
+
+.racoon {
+  position: absolute;
+  left: 0;
+}
+
+.relative-container {
+  position: relative;
+}
+
+.absolute-container {
+  position: absolute;
+}
