@@ -1,16 +1,19 @@
 .pineapple {
   position: absolute;
   left: 0;
+  top:0;
 }
 
 .racoon {
   position: absolute;
   right: 0;
+  bottom: 0;
 }
 
 .relative-container {
   position: relative;
   width: 700px;
+  height: 600px;
   border: 1px solid cyan;
 }
 
