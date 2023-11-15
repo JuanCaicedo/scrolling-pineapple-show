@@ -10,7 +10,6 @@
 }
 
 .demo-panel {
-  container-type: size;
   overflow: hidden;
   background-color: #111111;
   aspect-ratio: 0.5;
@@ -24,8 +23,7 @@
   position: absolute;
   width: 200px;
   height: 200px;
-  left: 1cqw;
-  top: 1cqh;
+  left: 0;
 }
 
 .racoon {
