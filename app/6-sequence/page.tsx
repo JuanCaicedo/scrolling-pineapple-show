@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import { Pin, Root, Animation } from "@bsmnt/scrollytelling";
+import "./styles.css";
 
 export default function AnimationDemo() {
   const [src, setSrc] = useState("/pineapple-run-1.png");
@@ -32,23 +33,41 @@ export default function AnimationDemo() {
   return (
     <Root>
       <Pin childHeight={"100vh"} pinSpacerHeight={"800vh"} top="0">
-        <img ref={imgRef} src={src} className="demo-image" />
-        <Animation
-          tween={{
-            target: imgRef,
-            start: 0,
-            end: 100,
-            to: {
-              onUpdate: function () {
-                const progress = this.progress();
-                const newSrc = chooseSrc(progress);
-                if (newSrc !== src) {
-                  setSrc(newSrc);
-                }
-              },
-            },
-          }}
-        />
+        <div className="demo-panel-container">
+          <div className="demo-panel">
+            <img ref={imgRef} src={src} className="demo-image" />
+            <Animation
+              tween={{
+                target: imgRef,
+                start: 0,
+                end: 100,
+                to: {
+                  onUpdate: function () {
+                    const progress = this.progress();
+                    const newSrc = chooseSrc(progress);
+                    if (newSrc !== src) {
+                      setSrc(newSrc);
+                    }
+                  },
+                },
+              }}
+            />
+
+            <Animation
+              tween={{
+                target: imgRef,
+                start: 0,
+                end: 100,
+                fromTo: [
+                  {
+                    left: "0cqw",
+                  },
+                  { left: "100cqw" },
+                ],
+              }}
+            />
+          </div>
+        </div>
       </Pin>
     </Root>
   );
