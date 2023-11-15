@@ -22,11 +22,19 @@
 
 .pineapple {
   position: absolute;
+  width: 100px;
+  height: 100px;
   left: 0;
 }
 
 .racoon {
   position: absolute;
+  width: 100px;
+  height: 100px;
   right: 0;
 }
 
+.relative-container {
+  position: relative;
+  width: 200px;
+}
