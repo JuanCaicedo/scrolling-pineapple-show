@@ -26,9 +26,9 @@ export default function Panel() {
               end: 100,
               fromTo: [
                 {
-                  left: "0px",
+                  left: "0cqw",
                 },
-                { left: "600px" },
+                { left: "100cqw" },
               ],
             }}
           />
