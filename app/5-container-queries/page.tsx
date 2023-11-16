@@ -26,9 +26,10 @@ export default function Panel() {
               end: 100,
               fromTo: [
                 {
-                  left: "0px",
+                  left: "0cqw",
+                  top: "0cqh",
                 },
-                { left: "600px" },
+                { left: "50cqw", top: "50cqh" },
               ],
             }}
           />
