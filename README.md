@@ -1,23 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## The Scrolling Pineapple Show
 
-First, run the development server:
+This is the interactive comic book that I built for JSConf Colombia 2023!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+It's live here https://scrolling-pineapple-show.vercel.app
 
 ## To develop with scrollytelling lib
 ```
 ln -sf node_modules/@bsmnt/scrollytelling/dist/index.js ./bsmnt-scrollytelling.js
 nodemon --exec "rm -rf .next && yarn dev" --watch ./bsmnt-scrollytelling.js
 ```
+
+## Scrollytelling examples
+- https://neal.fun/deep-sea/
+- https://www.thewaterweeat.com/
+- https://stories.sydneyoperahouse.com/sydney-opera-house-at-rest/
+- https://scrollytelling.basement.studio/
+- https://pitchfork.com/features/cover-story/reader/daft-punk/
