@@ -7,6 +7,9 @@
 }
 
 .demo-panel {
+  height: 100vh;
+  background-color: black;
+  aspect-ratio: 0.5;
 }
 
 

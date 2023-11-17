@@ -6,11 +6,15 @@ import "./styles.css";
 export default function AnimationDemo() {
   const ref = useRef(null);
   return (
-    <div className="absolute-container">
-      <div className="relative-container">
-        <img src="/pineapple-run-1.png" className="small-image pineapple" />
-        <img src="/racoon-run-1.png" className="small-image racoon" />
-      </div>
-    </div>
+    <Root>
+      <Pin childHeight="100vh" pinSpacerHeight="800vh">
+        <div className="absolute-container" ref={ref}>
+          <div className="relative-container">
+            <img src="/pineapple-run-1.png" className="small-image pineapple" />
+            <img src="/racoon-run-1.png" className="small-image racoon" />
+          </div>
+        </div>
+      </Pin>
+    </Root>
   );
 }
