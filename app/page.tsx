@@ -25,20 +25,26 @@ import ParallaxInfiniteScene from "@/scenes/ParallaxInfiniteScene";
 
 export default function Home() {
   return (
-    <main className="">
-      <ScrollTextScene />
-      <TitleScene />
-      <IntroScene />
-      <IpodScene />
-      <Spin />
-      <DanceScene />
-      <StealScene />
-      <LightsOutScene />
-      <AfterStealScene />
-      <AngryScene />
-      <TunnelScene />
-      <OutTunnelScene />
-      <ParallaxInfiniteScene />
-    </main>
+    <>
+      <Head>
+        <link rel="shortcut icon" href="/favicon.ico" />
+      </Head>
+
+      <main className="">
+        <ScrollTextScene />
+        <TitleScene />
+        <IntroScene />
+        <IpodScene />
+        <Spin />
+        <DanceScene />
+        <StealScene />
+        <LightsOutScene />
+        <AfterStealScene />
+        <AngryScene />
+        <TunnelScene />
+        <OutTunnelScene />
+        <ParallaxInfiniteScene />
+      </main>
+    </>
   );
 }
