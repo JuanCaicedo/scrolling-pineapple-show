@@ -60,7 +60,7 @@ export default function AnimationDemo() {
                   {
                     left: "0cqw",
                   },
-                  { left: "50cqw" },
+                  { left: "20cqw" },
                 ],
               }}
             />
