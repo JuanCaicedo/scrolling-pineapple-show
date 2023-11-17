@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 
 export default function UseRef() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     console.log("ref.current.width", ref?.current?.width);
