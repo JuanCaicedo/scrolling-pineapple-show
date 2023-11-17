@@ -8,7 +8,7 @@ export default function AnimationDemo() {
 
   const imgRef = useRef<HTMLImageElement>(null);
 
-  function chooseSrc(progress: number) : string{
+  function chooseSrc(progress: number): string {
     if (progress < 0.1) {
       return "/pineapple-run-1.png";
     }
@@ -27,7 +27,7 @@ export default function AnimationDemo() {
     if (progress < 0.6) {
       return "/pineapple-run-6.png";
     }
-      return "/pineapple-run-1.png";
+    return "/pineapple-run-1.png";
   }
 
   return (
