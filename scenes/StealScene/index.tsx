@@ -61,7 +61,7 @@ export default function StealScene() {
         />
         <img
           ref={ipodRef}
-          src="/ipod-1.png"
+          src="/ipod-light.png"
           className={`image canvas ${styles.ipod}`}
         />
       </div>
